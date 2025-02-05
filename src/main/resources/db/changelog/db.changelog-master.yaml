@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/changeset/001-create-hotels-table.yaml
+  - include:
+      file: db/changelog/changeset/002-create-addresses-table.yaml
+  - include:
+      file: db/changelog/changeset/003-create-contacts-table.yaml
+  - include:
+      file: db/changelog/changeset/004-create-arrival_times-table.yaml
+  - include:
+      file: db/changelog/changeset/005-add-foreign-key-constraints.yaml

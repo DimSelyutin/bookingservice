@@ -1,0 +1,56 @@
+openapi: 3.0.3
+info:
+  title: DTO with info
+  description: Descr.
+  version: 1.0.0
+paths: {}
+components:
+  schemas:
+    HotelDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        brand:
+          type: string
+        address:
+          type: object
+          properties:
+            houseNumber:
+              type: integer
+            street:
+              type: string
+            city:
+              type: string
+            county:
+              type: string
+            postCode:
+              type: string
+        contacts:
+          type: object
+          properties:
+            phone:
+              type: string
+            email:
+              type: string
+        arrivalTime:
+          type: object
+          properties:
+            checkIn:
+              type: string
+              format: time
+            checkOut:
+              type: string
+              format: time
+        amenities:
+          type: array
+          items:
+            type: string
+      required:
+        - name
+        - brand
+        - contacts
+        - arrivalTime
+        - amenities

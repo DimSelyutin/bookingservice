@@ -1,0 +1,231 @@
+openapi: 3.0.0
+info:
+  title: Hotel Management API
+  description: API for managing hotels, including searching, retrieving, and creating hotel records.
+  version: 1.0.0
+servers:
+  - url: http://localhost/v1
+paths:
+  /hotels:
+    get:
+      summary: Get all hotels
+      operationId: getHotels
+      responses:
+        '200':
+          description: A list of hotels with brief information
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HotelBrief'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+    post:
+      summary: Create a new hotel
+      operationId: createHotel
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewHotel'
+      responses:
+        '201':
+          description: Hotel created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HotelBrief'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+
+  /hotels/{id}:
+    get:
+      summary: Get detailed information about a specific hotel
+      operationId: getHotelById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the hotel
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Detailed information about a hotel
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HotelDetail'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+
+  /search:
+    get:
+      summary: Search hotels by various parameters
+      operationId: searchHotels
+      parameters:
+        - name: name
+          in: query
+          schema:
+            type: string
+        - name: brand
+          in: query
+          schema:
+            type: string
+        - name: city
+          in: query
+          schema:
+            type: string
+        - name: county
+          in: query
+          schema:
+            type: string
+        - name: amenities
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of hotels matching the search criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HotelBrief'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+
+  /hotels/{id}/amenities:
+    post:
+      summary: Add amenities to a hotel
+      operationId: addHotelAmenities
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID of the hotel
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        '204':
+          description: Amenities added successfully
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+
+  /histogram/{param}:
+    get:
+      summary: Get count of hotels grouped by specified parameter
+      operationId: getHotelHistogram
+      parameters:
+        - name: param
+          in: path
+          required: true
+          description: Parameter to group by (brand, city, county, amenities)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Count of hotels grouped by parameter
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDto'
+
+components:
+  schemas:
+    HotelBrief:
+      $ref: "./hotel-brief-dto.yaml"
+    HotelDetail:
+      $ref: "./hotel-details-dto.yaml"
+    NewHotel:
+      $ref: "./new-hotel-dto.yaml"
+    ErrorDto:
+      $ref: "./error-dtos.yaml"
+

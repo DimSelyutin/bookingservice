@@ -1,0 +1,43 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002-create-addresses-table
+      author: DimSelyutin
+      changes:
+        - createTable:
+            tableName: addresses
+            columns:
+              - column:
+                  name: uuid
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    autoIncrement: true
+              - column:
+                  name: house_number
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: street
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: city
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: county
+                  type: varchar(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: post_code
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+      rollback:
+        - dropTable:
+            tableName: addresses

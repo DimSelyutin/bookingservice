@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003-create-contacts-table
+      author: DimSelyutin
+      changes:
+        - createTable:
+            tableName: contacts
+            columns:
+              - column:
+                  name: uuid
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    autoIncrement: true
+              - column:
+                  name: phone
+                  type: varchar(20)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    nullable: true
+      rollback:
+        - dropTable:
+            tableName: contacts

@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: 005-add-foreign-key-constraints
+      author: DimSelyutin
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: hotels
+            baseColumnNames: address_id
+            referencedTableName: addresses
+            referencedColumnNames: id
+            constraintName: fk_hotels_address
+
+        - addForeignKeyConstraint:
+            baseTableName: hotels
+            baseColumnNames: contact_id
+            referencedTableName: contacts
+            referencedColumnNames: id
+            constraintName: fk_hotels_contact
+
+        - addForeignKeyConstraint:
+            baseTableName: hotels
+            baseColumnNames: arrival_time_id
+            referencedTableName: arrival_times
+            referencedColumnNames: id
+            constraintName: fk_hotels_arrival_time
+      rollback:
+        - dropForeignKeyConstraint:
+            baseTableName: hotels
+            constraintName: fk_hotels_address
+        - dropForeignKeyConstraint:
+            baseTableName: hotels
+            constraintName: fk_hotels_contact
+        - dropForeignKeyConstraint:
+            baseTableName: hotels
+            constraintName: fk_hotels_arrival_time

@@ -1,0 +1,66 @@
+openapi: 3.0.3
+info:
+  title: DTO with info
+  description: Descr.
+  version: 1.0.0
+paths: { }
+components:
+  schemas:
+    NewHotel:
+      type: object
+      properties:
+        name:
+          type: string
+          example: "Hotel California"
+        description:
+          type: string
+          nullable: true
+          example: "A lovely place with a warm atmosphere."
+        brand:
+          type: string
+          example: "California Hotels"
+        address:
+          type: object
+          properties:
+            houseNumber:
+              type: integer
+              example: 123
+            street:
+              type: string
+              example: "Main St"
+            city:
+              type: string
+              example: "Los Angeles"
+            county:
+              type: string
+              example: "Los Angeles County"
+            postCode:
+              type: string
+              example: "90001"
+        contacts:
+          type: object
+          properties:
+            phone:
+              type: string
+              example: "+1-800-555-0123"
+            email:
+              type: string
+              example: "contact@hotelcalifornia.com"
+        arrivalTime:
+          type: object
+          properties:
+            checkIn:
+              type: string
+              format: time
+              nullable: true
+              example: "15:00"
+            checkOut:
+              type: string
+              format: time
+              nullable: true
+              example: "11:00"
+      required:
+        - name
+        - brand
+        - contacts
+        - arrivalTime
