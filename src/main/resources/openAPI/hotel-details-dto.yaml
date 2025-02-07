@@ -1,9 +1,3 @@
-openapi: 3.0.3
-info:
-  title: DTO with info
-  description: Descr.
-  version: 1.0.0
-paths: {}
 components:
   schemas:
     HotelDetail:
@@ -11,43 +5,23 @@ components:
       properties:
         id:
           type: integer
+          description: Unique identifier for the hotel.
         name:
           type: string
+          example: "Hotel California"
+          description: The name of the hotel.
         brand:
           type: string
+          example: "California Hotels"
+          description: The brand associated with the hotel.
         address:
-          type: object
-          properties:
-            houseNumber:
-              type: integer
-            street:
-              type: string
-            city:
-              type: string
-            county:
-              type: string
-            postCode:
-              type: string
+          $ref: 'hotel-dtos.yaml#/components/schemas/Address'
         contacts:
-          type: object
-          properties:
-            phone:
-              type: string
-            email:
-              type: string
+          $ref: 'hotel-dtos.yaml#/components/schemas/Contact'
         arrivalTime:
-          type: object
-          properties:
-            checkIn:
-              type: string
-              format: time
-            checkOut:
-              type: string
-              format: time
+          $ref: 'hotel-dtos.yaml#/components/schemas/ArrivalTime'
         amenities:
-          type: array
-          items:
-            type: string
+          $ref: 'hotel-dtos.yaml#/components/schemas/Amenities'
       required:
         - name
         - brand

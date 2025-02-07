@@ -3,9 +3,7 @@ package com.booking.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.time.LocalTime;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -14,7 +12,7 @@ import java.util.UUID;
 public class ArrivalTime {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Integer id;
 
     @Column(nullable = false)
     private LocalTime checkIn;

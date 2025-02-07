@@ -7,7 +7,7 @@ databaseChangeLog:
             tableName: arrival_times
             columns:
               - column:
-                  name: uuid
+                  name: id
                   type: bigint
                   constraints:
                     primaryKey: true

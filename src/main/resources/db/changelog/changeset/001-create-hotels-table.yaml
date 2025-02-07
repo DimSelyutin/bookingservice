@@ -8,7 +8,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: uuid
+                  type: bigint
                   constraints:
                     primaryKey: true
                     nullable: false
@@ -28,6 +28,23 @@ databaseChangeLog:
                   type: varchar(100)
                   constraints:
                     nullable: true
+              - column:
+                  name: address_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: contact_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: arrival_time_id
+                  type: bigint
+                  constraints:
+                    nullable: false
       rollback:
         - dropTable:
             tableName: hotels

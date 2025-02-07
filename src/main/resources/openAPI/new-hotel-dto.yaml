@@ -1,9 +1,3 @@
-openapi: 3.0.3
-info:
-  title: DTO with info
-  description: Descr.
-  version: 1.0.0
-paths: { }
 components:
   schemas:
     NewHotel:
@@ -11,56 +5,29 @@ components:
       properties:
         name:
           type: string
+          nullable: false
           example: "Hotel California"
+          description: The name of the hotel.
         description:
           type: string
-          nullable: true
+          nullable: false
           example: "A lovely place with a warm atmosphere."
+          description: A brief description of the hotel.
         brand:
           type: string
           example: "California Hotels"
+          description: The brand associated with the hotel.
         address:
-          type: object
-          properties:
-            houseNumber:
-              type: integer
-              example: 123
-            street:
-              type: string
-              example: "Main St"
-            city:
-              type: string
-              example: "Los Angeles"
-            county:
-              type: string
-              example: "Los Angeles County"
-            postCode:
-              type: string
-              example: "90001"
+          $ref: 'hotel-dtos.yaml#/components/schemas/Address'
         contacts:
-          type: object
-          properties:
-            phone:
-              type: string
-              example: "+1-800-555-0123"
-            email:
-              type: string
-              example: "contact@hotelcalifornia.com"
+          $ref: 'hotel-dtos.yaml#/components/schemas/Contact'
         arrivalTime:
-          type: object
-          properties:
-            checkIn:
-              type: string
-              format: time
-              nullable: true
-              example: "15:00"
-            checkOut:
-              type: string
-              format: time
-              nullable: true
-              example: "11:00"
+          $ref: 'hotel-dtos.yaml#/components/schemas/ArrivalTime'
+        amenities:
+          $ref: 'hotel-dtos.yaml#/components/schemas/Amenities'
       required:
         - name
         - brand
         - contacts
         - arrivalTime
+        - amenities

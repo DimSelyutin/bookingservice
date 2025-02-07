@@ -1,11 +1,3 @@
-openapi: 3.0.3
-info:
-  title: System Response DTOs
-  description: Data Transfer Objects (DTOs) defining the structure of system responses, including error handling.
-  version: 1.0.0
-
-paths: {}
-
 components:
   schemas:
     ErrorDto:

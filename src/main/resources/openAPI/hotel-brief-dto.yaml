@@ -1,20 +1,17 @@
-openapi: 3.0.3
-info:
-  title: DTO with info
-  description: Descr.
-  version: 1.0.0
-paths: {}
 components:
   schemas:
     HotelBrief:
       type: object
-      description: Данные для получения информации по дебетовой карте
+      description: Brief dto
       properties:
         id:
-          type: integer
+          type: string
+          format: integer
         name:
           type: string
         description:
+          type: string
+        brand:
           type: string
         address:
           type: string

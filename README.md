@@ -10,7 +10,7 @@ The Hotel Management Service is a RESTful API designed to manage hotel informati
 
 - Retrieve a list of all hotels with brief information.
 - Get detailed information about a specific hotel.
-- Search for hotels by various parameters (name, brand, city, county, amenities).
+- Search for hotels by various parameters (name, brand, city, country, amenities).
 - Create new hotel entries.
 - Add amenities to existing hotels.
 - Get a histogram of hotels grouped by specified attributes.
@@ -26,7 +26,7 @@ The API is documented using [OpenAPI](https://swagger.io/specification/) and can
 3. **GET /search**: Search for hotels based on multiple parameters.
 4. **POST /hotels**: Create a new hotel.
 5. **POST /hotels/{id}/amenities**: Add amenities to a hotel.
-6. **GET /histogram/{param}**: Get the count of hotels grouped by the specified parameter (`brand`, `city`, `county`, `amenities`).
+6. **GET /histogram/{param}**: Get the count of hotels grouped by the specified parameter (`brand`, `city`, `country`, `amenities`).
 
 Refer to the OpenAPI documentation for detailed information on request/response formats.
 

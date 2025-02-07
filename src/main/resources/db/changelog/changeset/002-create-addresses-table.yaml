@@ -7,7 +7,7 @@ databaseChangeLog:
             tableName: addresses
             columns:
               - column:
-                  name: uuid
+                  name: id
                   type: bigint
                   constraints:
                     primaryKey: true
@@ -29,7 +29,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: county
+                  name: country
                   type: varchar(100)
                   constraints:
                     nullable: false

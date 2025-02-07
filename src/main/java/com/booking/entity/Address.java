@@ -3,7 +3,6 @@ package com.booking.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -12,7 +11,7 @@ import java.util.UUID;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Integer id;
 
     @Column(nullable = false)
     private int houseNumber;
@@ -23,7 +22,7 @@ public class Address {
     @Column(nullable = false)
     private String city;
 
-    private String county;
+    private String country;
 
     @Column(nullable = false)
     private String postCode;
