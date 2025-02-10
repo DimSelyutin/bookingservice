@@ -1,0 +1,22 @@
+components:
+  schemas:
+    HotelSearchCriteriaDTO:
+      type: object
+      properties:
+        name:
+          type: string
+        brand:
+          type: string
+        city:
+          type: string
+        country:
+          type: string
+        amenities:
+          type: array
+          items:
+            type: string
+          description: "Список удобств, которые должны быть в отеле, например: 'WiFi', 'Бассейн', 'Парковка'"
+        page:
+          type: integer
+        size:
+          type: integer

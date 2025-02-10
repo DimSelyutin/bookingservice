@@ -1,12 +1,13 @@
 package com.booking.facade.impl;
 
 import com.booking.entity.Hotel;
-import com.booking.entity.util.HotelDetailsDto;
+import com.booking.entity.util.HotelSearchCriteria;
 import com.booking.exception.HotelNotFoundException;
 import com.booking.facade.HotelFacade;
 import com.booking.mapper.HotelMapper;
 import com.booking.openapi.model.HotelBrief;
 import com.booking.openapi.model.HotelDetail;
+import com.booking.openapi.model.HotelSearchCriteriaDTO;
 import com.booking.openapi.model.NewHotel;
 import com.booking.service.HotelService;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Component
@@ -70,5 +72,24 @@ public class HotelFacadeImpl implements HotelFacade {
         HotelBrief hotelBrief = hotelMapper.toHotelBriefDto(savedHotel);
         log.debug("GET-request, createHotel - start, savedHotel = {}", hotelBrief);
         return hotelBrief;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public List<HotelBrief> searchHotels(HotelSearchCriteriaDTO criteriaDTO) {
+        log.debug("POST-request, searchHotels - start, criteria = {}", criteriaDTO);
+        
+        HotelSearchCriteria criteria = hotelMapper.toHotelBriefSearchCriteria(criteriaDTO);
+
+        List<Hotel> hotels = hotelService.searchHotelsByFilters(criteria);
+
+        List<HotelBrief> response = hotels.stream()
+                .map(hotelMapper::toHotelBriefDto)
+                .collect(Collectors.toList());
+
+        log.debug("POST-request, searchHotels - end, size = {}", response.size());
+        return response;
     }
 }

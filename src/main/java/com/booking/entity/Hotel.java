@@ -3,15 +3,16 @@ package com.booking.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "hotels")
 public class Hotel {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hotel_seq")
+    @SequenceGenerator(name = "hotel_seq", sequenceName = "hotel_sequence", allocationSize = 1)
     private Integer id;
 
     @Column(nullable = false)
@@ -33,4 +34,10 @@ public class Hotel {
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "arrival_time_id", nullable = false)
     private ArrivalTime arrivalTime;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable( name = "hotel_amenities",
+                joinColumns = @JoinColumn(name = "hotel_id"),
+                inverseJoinColumns = @JoinColumn(name = "amenity_id"))
+    private List<Amenity> amenities;
 }

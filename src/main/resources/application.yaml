@@ -4,20 +4,29 @@ server:
 spring:
   application:
     name: booking
+  profiles:
+    active: H2
+# Общие свойства JPA
+spring.jpa:
+  show-sql: true
+  properties:
+    hibernate:
+      format_sql: true
 
-  datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
-    hikari:
-      maximum-pool-size: 10
-      minimum-idle: 2
-      idle-timeout: 30000
-    h2:
-      console:
-        enabled: true
+# Настройки Liquibase
+spring.liquibase.change-log: classpath:db/changelog/db.changelog-master.yaml
 
-
-  liquibase:
-    change-log: classpath:db/changelog/db.changelog-master.yaml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, prometheus, loggers
+    access:
+      default:
+  endpoint:
+    health:
+      access: unrestricted
+    loggers:
+      access: unrestricted
+    prometheus:
+      access: unrestricted

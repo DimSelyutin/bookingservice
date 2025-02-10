@@ -17,19 +17,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(MockitoExtension.class) // Используем Mockito для тестирования
+@ExtendWith(MockitoExtension.class)
 public class HotelServiceImplTest {
 
     @Mock
-    private HotelRepository hotelRepository; // Имитируем HotelRepository
+    private HotelRepository hotelRepository;
 
     @InjectMocks
-    private HotelServiceImpl hotelService; // Создаем экземпляр сервиса с внедрением мока
-
-    @BeforeEach
-    public void setUp() {
-        // Эта часть не требуется, так как Mockito выполняет эту работу автоматически
-    }
+    private HotelServiceImpl hotelService;
 
     @Test
     public void whenHotelExists_thenReturnHotel() {
@@ -62,7 +57,7 @@ public class HotelServiceImplTest {
             hotelService.getHotel(hotelId);
         });
 
-        assertEquals("Hotel not found!", exception.getMessage());
+        assertEquals("Hotel with id 1 not found!", exception.getMessage());
     }
 
 

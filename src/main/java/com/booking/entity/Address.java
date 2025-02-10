@@ -10,7 +10,8 @@ import lombok.Setter;
 @Table(name = "addresses")
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_seq")
+    @SequenceGenerator(name = "address_seq", sequenceName = "address_sequence", allocationSize = 1)
     private Integer id;
 
     @Column(nullable = false)
@@ -22,6 +23,7 @@ public class Address {
     @Column(nullable = false)
     private String city;
 
+    @Column(nullable = false)
     private String country;
 
     @Column(nullable = false)

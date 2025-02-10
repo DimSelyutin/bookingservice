@@ -6,6 +6,7 @@ import com.booking.facade.HotelFacade;
 import com.booking.openapi.api.PropertyViewApi;
 import com.booking.openapi.model.HotelBrief;
 import com.booking.openapi.model.HotelDetail;
+import com.booking.openapi.model.HotelSearchCriteriaDTO;
 import com.booking.openapi.model.NewHotel;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
@@ -58,7 +59,7 @@ public class HotelController implements PropertyViewApi {
      */
     @Override
     @Operation(summary = "Метод получения списка гостиниц")
-    @GetMapping("/hotels")
+    @GetMapping()
     public ResponseEntity<List<HotelBrief>> getHotels(
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "10") Integer size) {
@@ -86,4 +87,24 @@ public class HotelController implements PropertyViewApi {
         log.debug("POST-request, createHotel - end, response = {}", hotelBrief);
         return ResponseEntity.status(HttpStatus.CREATED).body(hotelBrief);
     }
+
+    /**
+     * Поиск отеля по фильтрам.
+     *
+     * @param criteriaDTO DTO с фильтрами
+     * @return DTO найденого отеля
+     */
+    @Operation(summary = "Метод поиска гостиниц по критериям")
+    @GetMapping("/search")
+    public ResponseEntity<List<HotelBrief>> searchHotels(@ModelAttribute HotelSearchCriteriaDTO criteriaDTO) {
+        log.debug("GET-request, searchHotels - start, criteria = {}", criteriaDTO);
+
+        List<HotelBrief> hotelBriefs = hotelFacade.searchHotels(criteriaDTO);
+        ResponseEntity<List<HotelBrief>> response = ResponseEntity.ok(hotelBriefs);
+        log.debug("GET-request, searchHotels - end, size = {}", hotelBriefs.size());
+
+        return response;
+    }
+
+
 }

@@ -3,6 +3,7 @@ package com.booking.facade;
 import com.booking.entity.util.HotelDetailsDto;
 import com.booking.openapi.model.HotelBrief;
 import com.booking.openapi.model.HotelDetail;
+import com.booking.openapi.model.HotelSearchCriteriaDTO;
 import com.booking.openapi.model.NewHotel;
 
 import java.util.List;
@@ -36,4 +37,12 @@ public interface HotelFacade {
      * @return HotelBrief
      */
     HotelBrief createHotel(NewHotel newHotel);
+
+    /**
+     * Search hotels of criteria.
+     *
+     * @param criteriaDTO dto with List of Hotel
+     * @return list of HotelBrief
+     */
+    List<HotelBrief> searchHotels(HotelSearchCriteriaDTO criteriaDTO);
 }

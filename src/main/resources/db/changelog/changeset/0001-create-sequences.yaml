@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0001-create-sequences
+      author: DimSelyutin
+      changes:
+        - createSequence:
+            sequenceName: hotel_sequence
+            startValue: 1
+            incrementBy: 1
+        - createSequence:
+            sequenceName: address_sequence
+            startValue: 1
+            incrementBy: 1
+        - createSequence:
+            sequenceName: contact_sequence
+            startValue: 1
+            incrementBy: 1
+        - createSequence:
+            sequenceName: arrival_sequence
+            startValue: 1
+            incrementBy: 1
+        - createSequence:
+            sequenceName: amenities_sequence
+            startValue: 1
+            incrementBy: 1

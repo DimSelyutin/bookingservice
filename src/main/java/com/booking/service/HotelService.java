@@ -1,15 +1,12 @@
 package com.booking.service;
 
 import com.booking.entity.Hotel;
-import com.booking.entity.util.HotelDetailsDto;
-import com.booking.openapi.model.HotelBrief;
-import com.booking.openapi.model.NewHotel;
+import com.booking.entity.util.HotelSearchCriteria;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.UUID;
 
 /**
  * API сервиса для работы с {@link Hotel}.
@@ -41,14 +38,6 @@ public interface HotelService {
     Hotel createHotel(Hotel hotel);
 
 
-    /**------------/search?city=minsk&name=Avrora
-     * Получение списка гостиниц по определенным фильтрам.
-     *
-     * @param filter критерии для поиска гостиниц
-     * @return список гостиниц, соответствующих критериям фильтрации
-     */
-    List<Hotel> searchHotelsByFilters(String filter);
-
 //    /**
 //     * Обновление информации о гостинице.
 //     *
@@ -67,4 +56,12 @@ public interface HotelService {
      * @return список гостиниц с заданным статусом
      */
     Page<Hotel> getAllHotelsByStatus(String status, Integer page, Integer size);
+
+    /**
+     * Получение списка гостиниц по определенным фильтрам.
+     *
+     * @param criteria критерии для поиска гостиниц
+     * @return список гостиниц, соответствующих критериям фильтрации
+     */
+    List<Hotel> searchHotelsByFilters(HotelSearchCriteria criteria);
 }

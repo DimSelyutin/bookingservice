@@ -247,6 +247,8 @@ components:
       $ref: "hotel-details-dto.yaml#/components/schemas/HotelDetail"
     NewHotel:
       $ref: "new-hotel-dto.yaml#/components/schemas/NewHotel"
+    HotelSearchCriteriaDTO:
+      $ref: "./hotel-search-criteria-dto.yaml#/components/schemas/HotelSearchCriteriaDTO"
     ErrorDto:
       $ref: "error-dtos.yaml#/components/schemas/ErrorDto"
 
