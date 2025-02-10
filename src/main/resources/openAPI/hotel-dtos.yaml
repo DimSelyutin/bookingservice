@@ -55,15 +55,7 @@ components:
     Amenities:
       type: array
       items:
-        type: object
-        properties:
-          id:
-            type: integer
-            example: 1
-          name:
-            type: string
-            example: "Free WiFi"
-        required:
-          - id
-          - name
+        type: string
+      example: ["Free WiFi", "Parking"]
+
       description: A list of amenities offered by the hotel.

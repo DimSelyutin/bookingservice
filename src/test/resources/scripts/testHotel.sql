@@ -17,7 +17,6 @@ VALUES ('contact@testhotel.com', '+375291234567'),
 INSERT INTO hotels (name, brand, description, address_id, contact_id, arrival_time_id)
 VALUES ('DoubleTree by Hilton Minsk', 'Test Brand', 'A fine hotel for your stay.', 1, 1, 1),
        ('Radisson Blu Grodno', 'Another Brand', 'Luxury hotel in the heart of Grodno.', 2, 2, 2);
-
 -- Вставка данных в таблицу amenities
 INSERT INTO amenities (name)
 VALUES ('Free WiFi'),

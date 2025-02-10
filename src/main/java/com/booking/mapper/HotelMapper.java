@@ -1,6 +1,7 @@
 package com.booking.mapper;
 
 import com.booking.entity.Address;
+import com.booking.entity.Amenity;
 import com.booking.entity.Hotel;
 import com.booking.entity.util.HotelSearchCriteria;
 import com.booking.openapi.model.HotelBrief;
@@ -12,7 +13,9 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.Mappings;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -24,16 +27,23 @@ import java.util.List;
         injectionStrategy = org.mapstruct.InjectionStrategy.CONSTRUCTOR)
 public interface HotelMapper {
 
-    /**
-     * The Hotel object is being converted to the Hotel Details Dt o object.
-     *
-     * @param hotel object
-     * @return HotelDetailsDto object
-     */
+    @Mapping(target = "id", source = "hotel.id")
+    @Mapping(target = "name", source = "hotel.name")
+    @Mapping(target = "brand", source = "hotel.brand")
     @Mapping(target = "address", source = "hotel.address")
     @Mapping(target = "contacts", source = "hotel.contact")
-    @Mapping(target = "amenities", source = "hotel.amenities")
+    @Mapping(target = "arrivalTime", source = "hotel.arrivalTime")
+    @Mapping(target = "amenities", expression = "java(convertAmenitiesToNames(hotel.getAmenities()))")
     HotelDetail toHotelDetailsDto(Hotel hotel);
+
+    default List<String> convertAmenitiesToNames(List<Amenity> amenities) {
+        if (amenities == null) {
+            return Collections.emptyList();
+        }
+        return amenities.stream()
+                .map(Amenity::getName) // Здесь предполагается, что вам нужно именно имя удобства
+                .collect(Collectors.toList());
+    }
 
     /**
      * Преобразование HotelDetailsDto в Hotel.
@@ -65,8 +75,16 @@ public interface HotelMapper {
      * @param hotel the Hotel entity to convert
      * @return the converted HotelBrief DTO
      */
-    @Mapping(target = "phone" , source = "hotel.contact.phone")
+    @Mapping(target = "phone", source = "hotel.contact.phone")
     HotelBrief toHotelBriefDto(Hotel hotel);
+
+
+    @Mapping(target = "name", source = "dto.name")
+    @Mapping(target = "brand", source = "dto.brand")
+    @Mapping(target = "city", source = "dto.city")
+    @Mapping(target = "country", source = "dto.country")
+    @Mapping(target = "amenities", source = "dto.amenities")
+    HotelSearchCriteria toHotelBriefSearchCriteria(HotelSearchCriteriaDTO dto);
 
     /**
      * Метод для преобразования Address в String.
@@ -82,11 +100,4 @@ public interface HotelMapper {
                 address.getCountry()
         );
     }
-
-    @Mapping(target = "name", source = "dto.name")
-    @Mapping(target = "brand", source = "dto.brand")
-    @Mapping(target = "city", source = "dto.city")
-    @Mapping(target = "country", source = "dto.country")
-    @Mapping(target = "amenities", source = "dto.amenities")
-    HotelSearchCriteria toHotelBriefSearchCriteria(HotelSearchCriteriaDTO dto);
 }

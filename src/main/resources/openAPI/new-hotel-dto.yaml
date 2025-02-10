@@ -23,11 +23,8 @@ components:
           $ref: 'hotel-dtos.yaml#/components/schemas/Contact'
         arrivalTime:
           $ref: 'hotel-dtos.yaml#/components/schemas/ArrivalTime'
-        amenities:
-          $ref: 'hotel-dtos.yaml#/components/schemas/Amenities'
       required:
         - name
         - brand
         - contacts
         - arrivalTime
-        - amenities

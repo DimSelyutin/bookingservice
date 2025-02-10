@@ -2,6 +2,7 @@ package com.booking.controller;
 
 import com.booking.entity.util.HotelDetailsDto;
 import com.booking.exception.HotelNotFoundException;
+import com.booking.facade.AmenityFacade;
 import com.booking.facade.HotelFacade;
 import com.booking.openapi.api.PropertyViewApi;
 import com.booking.openapi.model.HotelBrief;
@@ -31,6 +32,7 @@ public class HotelController implements PropertyViewApi {
 
 
     private final HotelFacade hotelFacade;
+    private final AmenityFacade amenityFacade;
 
     /**
      * Getting extended information on a specific hotel.
@@ -45,7 +47,7 @@ public class HotelController implements PropertyViewApi {
         log.debug("GET-request, getHotelById - start, hotel id = {}", id);
 
         ResponseEntity<HotelDetail> response = ResponseEntity.ok(hotelFacade.getHotel(id));
-        log.debug("GET-request, getHotelById - end, response = {}", response);
+        log.info("GET-request, getHotelById - end, response = {}", response);
         return response;
 
     }
@@ -106,5 +108,19 @@ public class HotelController implements PropertyViewApi {
         return response;
     }
 
+    /**
+     * @param id
+     * @param amenities
+     * @return
+     */
+    @Operation(summary = "Добавление удобств к отелю")
+    @PostMapping("/{id}/amenities")
+    public ResponseEntity<Void> addAmenitiesToHotel(@PathVariable Integer id, @RequestBody List<String> amenities) {
+        log.debug("POST-request, addAmenitiesToHotel - start, hotelId = {}, amenities = {}", id, amenities);
 
+        amenityFacade.addAmenitiesToHotel(id, amenities);
+
+        log.debug("POST-request, addAmenitiesToHotel - end, hotelId = {}", id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }

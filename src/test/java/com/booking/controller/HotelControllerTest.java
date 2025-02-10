@@ -1,5 +1,6 @@
 package com.booking.controller;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -7,7 +8,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.booking.exception.HotelNotFoundException;
+import com.booking.facade.AmenityFacade;
 import com.booking.facade.HotelFacade;
+import com.booking.openapi.model.HotelSearchCriteriaDTO;
 import com.booking.openapi.model.NewHotel;
 import com.booking.util.TestData;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,8 +27,10 @@ import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 
 @ExtendWith(SpringExtension.class)
@@ -44,9 +49,10 @@ public class HotelControllerTest {
 
     private NewHotel newHotel;
 
+    private static final String API_URL = "/api/v1/property-view/hotels";
+
     @BeforeEach
     public void setUp() throws Exception {
-        MockitoAnnotations.openMocks(this);
         newHotel = objectMapper.readValue(
                 Files.readString(Paths.get(getClass().getClassLoader().getResource("./json/newHotel.json").toURI())),
                 NewHotel.class
@@ -55,11 +61,9 @@ public class HotelControllerTest {
 
     @Test
     public void createHotel_ShouldReturnCreated() throws Exception {
-        // Arrange
-        when(hotelFacade.createHotel(newHotel)).thenReturn(TestData.createTestHotelBrief()); // Предположим, что метод createHotel возвращает созданный объект
+        when(hotelFacade.createHotel(newHotel)).thenReturn(TestData.createTestHotelBrief());
 
-        // Act & Assert
-        mockMvc.perform(post("/api/v1/property-view/hotels")
+        mockMvc.perform(post(API_URL)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(newHotel)))
                 .andExpect(status().isCreated())
@@ -68,14 +72,11 @@ public class HotelControllerTest {
     }
 
     @Test
-    @Sql(scripts = "classpath:scripts/testHotel.sql")
     public void getHotelById_ShouldReturnHotelDetail() throws Exception {
-        // Arrange
         Integer hotelId = 1;
         when(hotelFacade.getHotel(hotelId)).thenReturn(TestData.createTestHotelDetails());
 
-        // Act & Assert
-        mockMvc.perform(get("/api/v1/property-view/hotels/{id}", hotelId))
+        mockMvc.perform(get(API_URL + "/{id}", hotelId))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(hotelId))
                 .andExpect(jsonPath("$.name").value(newHotel.getName()))
@@ -84,11 +85,9 @@ public class HotelControllerTest {
 
     @Test
     public void getHotels_ShouldReturnListOfHotelBrief() throws Exception {
-        // Arrange
-        when(hotelFacade.getHotels(0, 10)).thenReturn(List.of(TestData.createTestHotelBrief(), TestData.createTestHotelBrief())); // Предположим, что метод getHotels возвращает список
+        when(hotelFacade.getHotels(0, 10)).thenReturn(List.of(TestData.createTestHotelBrief(), TestData.createTestHotelBrief()));
 
-        // Act & Assert
-        mockMvc.perform(get("/api/v1/property-view/hotels")
+        mockMvc.perform(get(API_URL)
                         .param("page", "0")
                         .param("size", "10"))
                 .andExpect(status().isOk())
@@ -98,34 +97,44 @@ public class HotelControllerTest {
 
     @Test
     public void getHotelById_NotFound_ShouldReturn404() throws Exception {
-        // Arrange
-        Integer hotelId = 999; // Не существующий
+        Integer hotelId = 999;
         when(hotelFacade.getHotel(hotelId)).thenThrow(new HotelNotFoundException("Hotel with id 999 not found!"));
 
-        // Act & Assert
-        mockMvc.perform(get("/api/v1/property-view/hotels/{id}", hotelId))
+        mockMvc.perform(get(API_URL + "/{id}", hotelId))
                 .andExpect(status().isNotFound())
-                .andExpect(jsonPath("$.errorCode").value(404)); // Проверка на наличие сообщения об ошибке
+                .andExpect(jsonPath("$.errorCode").value(404));
     }
 
     @Test
     public void getHotelById_InternalServerError_ShouldReturn500() throws Exception {
-
-        // Act & Assert
-        mockMvc.perform(get("/api/v1/property-view/hotels/{id}", "string"))
+        mockMvc.perform(get(API_URL + "/{id}", "string"))
                 .andExpect(status().isInternalServerError())
-                .andExpect(jsonPath("$.errorCode").value(500)); // Проверка на наличие сообщения об ошибке
+                .andExpect(jsonPath("$.errorCode").value(500));
     }
 
     @Test
+    @Sql(scripts = "classpath:scripts/testHotel.sql")
     public void testSearchHotels() throws Exception {
 
+        when(hotelFacade.searchHotels(any(HotelSearchCriteriaDTO.class)))
+                .thenReturn(List.of(TestData.createTestHotelBrief()));
 
-        mockMvc.perform(get("/api/v1/property-view/hotels/search?city=Minsk&amenities=Free WiFi"))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(1))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].name").value("DoubleTree by Hilton Minsk"));
+        mockMvc.perform(get(API_URL + "/search?city=Minsk&amenities=Free WiFi"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id").value(TestData.createTestHotelBrief().getId()))
+                .andExpect(jsonPath("$[0].name").value("DoubleTree by Hilton Minsk"));
+    }
 
+    @Test
+    void addAmenitiesToHotel_ShouldReturnNoContent() throws Exception {
+        Integer hotelId = 1;
+        List<String> amenities = Arrays.asList("Wi-Fi", "Pool");
+        String jsonContent = objectMapper.writeValueAsString(amenities);
 
+        mockMvc.perform(post(API_URL + "/{id}/amenities", hotelId)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(jsonContent))
+                .andExpect(status().isNoContent());
     }
 }
+

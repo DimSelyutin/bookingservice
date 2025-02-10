@@ -129,10 +129,11 @@ public class TestData {
         arrivalTime.setCheckIn(ARRIVAL_CHECK_IN);
         arrivalTime.setCheckOut(ARRIVAL_CHECK_OUT);
         hotelDetail.setArrivalTime(arrivalTime);
-        AmenitiesInner amenity = new AmenitiesInner(1, "Free Wifi");
-        AmenitiesInner amenity2 = new AmenitiesInner(2, "Free Parking");
-        List<AmenitiesInner> amenities = List.of(amenity, amenity2);
-        hotelDetail.setAmenities(amenities);
+//        AmenitiesInner amenity = new AmenitiesInner(1, "Free Wifi");
+//        AmenitiesInner amenity2 = new AmenitiesInner(2, "Free Parking");
+//        List<AmenitiesInner> amenities = List.of(amenity, amenity2);
+//        hotelDetail.setAmenities(amenities);
+        hotelDetail.setAmenities(List.of("Free Parking", "Pool"));
 
         return hotelDetail;
     }
