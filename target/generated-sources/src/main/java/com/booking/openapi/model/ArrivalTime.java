@@ -18,7 +18,7 @@ import jakarta.annotation.Generated;
  * ArrivalTime
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-02-11T17:08:12.432809600+03:00[Europe/Moscow]", comments = "Generator version: 7.11.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-02-11T17:15:10.260959600+03:00[Europe/Moscow]", comments = "Generator version: 7.11.0")
 public class ArrivalTime {
 
   private String checkIn;
