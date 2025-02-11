@@ -23,7 +23,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -45,7 +44,7 @@ public class HotelControllerTest {
 
     private NewHotel newHotel;
 
-    private static final String API_URL = "/property-view/hotels";
+    private static final String API_URL = "/property-view";
 
     @BeforeEach
     public void setUp() throws Exception {
@@ -60,7 +59,7 @@ public class HotelControllerTest {
     public void createHotel_ShouldReturnCreated() throws Exception {
         when(hotelFacade.createHotel(newHotel)).thenReturn(TestData.createTestHotelBrief());
 
-        mockMvc.perform(post(API_URL)
+        mockMvc.perform(post(API_URL+"/hotels")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(newHotel)))
                 .andExpect(status().isCreated())
@@ -73,7 +72,7 @@ public class HotelControllerTest {
         Integer hotelId = 1;
         when(hotelFacade.getHotel(hotelId)).thenReturn(TestData.createTestHotelDetails());
 
-        mockMvc.perform(get(API_URL + "/{id}", hotelId))
+        mockMvc.perform(get(API_URL + "/hotels/{id}", hotelId))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(hotelId))
                 .andExpect(jsonPath("$.name").value(newHotel.getName()))
@@ -84,7 +83,7 @@ public class HotelControllerTest {
     public void getHotels_ShouldReturnListOfHotelBrief() throws Exception {
         when(hotelFacade.getHotels(0, 10)).thenReturn(List.of(TestData.createTestHotelBrief(), TestData.createTestHotelBrief()));
 
-        mockMvc.perform(get(API_URL)
+        mockMvc.perform(get(API_URL+"/hotels")
                         .param("page", "0")
                         .param("size", "10"))
                 .andExpect(status().isOk())
@@ -97,14 +96,14 @@ public class HotelControllerTest {
         Integer hotelId = 999;
         when(hotelFacade.getHotel(hotelId)).thenThrow(new HotelNotFoundException("Hotel with id 999 not found!"));
 
-        mockMvc.perform(get(API_URL + "/{id}", hotelId))
+        mockMvc.perform(get(API_URL + "/hotels/{id}", hotelId))
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.errorCode").value(404));
     }
 
     @Test
     public void getHotelById_InternalServerError_ShouldReturn500() throws Exception {
-        mockMvc.perform(get(API_URL + "/{id}", "string"))
+        mockMvc.perform(get(API_URL + "/hotels/{id}", "string"))
                 .andExpect(status().isInternalServerError())
                 .andExpect(jsonPath("$.errorCode").value(500));
     }
@@ -115,7 +114,7 @@ public class HotelControllerTest {
         when(hotelFacade.searchHotels(any(HotelSearchCriteriaDTO.class)))
                 .thenReturn(List.of(TestData.createTestHotelBrief()));
 
-        mockMvc.perform(get(API_URL + "/search?city=Minsk&amenities=Free WiFi"))
+        mockMvc.perform(get(API_URL + "/hotels/search?city=Minsk&amenities=Free WiFi"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].id").value(TestData.createTestHotelBrief().getId()))
                 .andExpect(jsonPath("$[0].name").value("DoubleTree by Hilton Minsk"));
@@ -127,7 +126,7 @@ public class HotelControllerTest {
         List<String> amenities = Arrays.asList("Free WiFi", "Swimming Pool");
         String jsonContent = objectMapper.writeValueAsString(amenities);
 
-        mockMvc.perform(post(API_URL + "/{id}/amenities", hotelId)
+        mockMvc.perform(post(API_URL + "/hotels/{id}/amenities", hotelId)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonContent))
                 .andExpect(status().isNoContent());
