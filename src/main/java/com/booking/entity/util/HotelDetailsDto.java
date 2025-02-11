@@ -10,7 +10,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * Класс, представляющий отель.
+ * The class representing the hotel.
  */
 @Getter
 @Setter

@@ -3,6 +3,9 @@ package com.booking.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+/**
+ * Represents an amenity that a hotel can provide.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -13,7 +16,7 @@ import lombok.*;
 public class Amenity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(nullable = false, unique = true)
     private String name;

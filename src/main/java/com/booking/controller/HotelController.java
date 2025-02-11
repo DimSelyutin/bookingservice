@@ -1,8 +1,7 @@
 package com.booking.controller;
 
-import com.booking.entity.util.HotelDetailsDto;
-import com.booking.exception.HotelNotFoundException;
 import com.booking.facade.AmenityFacade;
+import com.booking.facade.HistogramFacade;
 import com.booking.facade.HotelFacade;
 import com.booking.openapi.api.PropertyViewApi;
 import com.booking.openapi.model.HotelBrief;
@@ -18,10 +17,11 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 
 /**
- * Контроллер для работы "/property-view/hotels/".
+ * Controller for operation of "/property-view/hotels/".
  */
 @RestController
 @Slf4j
@@ -30,9 +30,9 @@ import java.util.List;
 @Validated
 public class HotelController implements PropertyViewApi {
 
-
     private final HotelFacade hotelFacade;
     private final AmenityFacade amenityFacade;
+    private final HistogramFacade histogramFacade;
 
     /**
      * Getting extended information on a specific hotel.
@@ -75,12 +75,12 @@ public class HotelController implements PropertyViewApi {
     }
 
     /**
-     * Создание нового отеля.
+     * Creation of a new hotel.
      *
-     * @param newHotel DTO с данными нового отеля
-     * @return DTO нового отеля
+     * @return DTO of the new hotel
+     * @* @param newHotel DTO with new hotel data
      */
-    @Operation(summary = "Создание нового отеля")
+    @Operation(summary = "Creation of a new hotel")
     @PostMapping
     public ResponseEntity<HotelBrief> createHotel(@RequestBody NewHotel newHotel) {
         log.debug("POST-request, createHotel - start, hotel = {}", newHotel);
@@ -91,12 +91,12 @@ public class HotelController implements PropertyViewApi {
     }
 
     /**
-     * Поиск отеля по фильтрам.
+     * Search for a hotel by filters.
      *
-     * @param criteriaDTO DTO с фильтрами
-     * @return DTO найденого отеля
+     * @param criteriaDTO DTO with filters
+     * @* @return DTO of the found hotel
      */
-    @Operation(summary = "Метод поиска гостиниц по критериям")
+    @Operation(summary = "The method of searching for hotels by criteria")
     @GetMapping("/search")
     public ResponseEntity<List<HotelBrief>> searchHotels(@ModelAttribute HotelSearchCriteriaDTO criteriaDTO) {
         log.debug("GET-request, searchHotels - start, criteria = {}", criteriaDTO);
@@ -113,7 +113,7 @@ public class HotelController implements PropertyViewApi {
      * @param amenities
      * @return
      */
-    @Operation(summary = "Добавление удобств к отелю")
+    @Operation(summary = "Adding amenities to the hotel")
     @PostMapping("/{id}/amenities")
     public ResponseEntity<Void> addAmenitiesToHotel(@PathVariable Integer id, @RequestBody List<String> amenities) {
         log.debug("POST-request, addAmenitiesToHotel - start, hotelId = {}, amenities = {}", id, amenities);
@@ -122,5 +122,24 @@ public class HotelController implements PropertyViewApi {
 
         log.debug("POST-request, addAmenitiesToHotel - end, hotelId = {}", id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    /**
+     * Getting a histogram of hotels by a given parameter.
+     *
+     * @param parameter for the histogram (for example, "city", "brand", "country", "amenities")
+     * @return histogram of hotels
+     */
+    @Override
+    @Operation(summary = "Getting a histogram of hotels by a given parameter")
+    @GetMapping("/histogram/{parameter}")
+    public ResponseEntity<Map<String, Integer>> getHotelHistogram(@PathVariable String parameter) {
+        log.debug("GET-request, getHotelHistogram - start, param = {}", parameter);
+
+        Map<String, Integer> histogram = histogramFacade.getHotelHistogram(parameter);
+        ResponseEntity<Map<String, Integer>> response = ResponseEntity.ok(histogram);
+        log.debug("GET-request, getHotelHistogram - end, histogram size = {}", histogram.size());
+
+        return response;
     }
 }

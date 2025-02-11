@@ -5,10 +5,11 @@ package com.booking.exception;
  * Error code: 400.
  **/
 public class BadRequestException extends RuntimeException {
+
     /**
-     * Конструктор исключения.
+     * Exception constructor.
      *
-     * @param message Сообщение.
+     * @param message Message.
      */
     public BadRequestException(final String message) {
         super(message);

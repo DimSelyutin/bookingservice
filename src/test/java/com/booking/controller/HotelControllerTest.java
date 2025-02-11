@@ -8,7 +8,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.booking.exception.HotelNotFoundException;
-import com.booking.facade.AmenityFacade;
 import com.booking.facade.HotelFacade;
 import com.booking.openapi.model.HotelSearchCriteriaDTO;
 import com.booking.openapi.model.NewHotel;
@@ -18,15 +17,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -58,6 +54,7 @@ public class HotelControllerTest {
                 NewHotel.class
         );
     }
+
 
     @Test
     public void createHotel_ShouldReturnCreated() throws Exception {
@@ -113,7 +110,6 @@ public class HotelControllerTest {
     }
 
     @Test
-    @Sql(scripts = "classpath:scripts/testHotel.sql")
     public void testSearchHotels() throws Exception {
 
         when(hotelFacade.searchHotels(any(HotelSearchCriteriaDTO.class)))
@@ -128,7 +124,7 @@ public class HotelControllerTest {
     @Test
     void addAmenitiesToHotel_ShouldReturnNoContent() throws Exception {
         Integer hotelId = 1;
-        List<String> amenities = Arrays.asList("Wi-Fi", "Pool");
+        List<String> amenities = Arrays.asList("Free WiFi", "Swimming Pool");
         String jsonContent = objectMapper.writeValueAsString(amenities);
 
         mockMvc.perform(post(API_URL + "/{id}/amenities", hotelId)
@@ -136,5 +132,24 @@ public class HotelControllerTest {
                         .content(jsonContent))
                 .andExpect(status().isNoContent());
     }
+
+    @Test
+    public void testGetHotelHistogramCity() throws Exception {
+        // Выполнение GET-запроса
+        mockMvc.perform(get(API_URL + "/histogram/city") // Замените на ваш URL
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.Minsk").value(1));
+    }
+
+    @Test
+    public void testGetHotelHistogramAmenities() throws Exception {
+        // Выполнение GET-запроса
+        mockMvc.perform(get(API_URL + "/histogram/amenities")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.['Free WiFi']").value(1));
+    }
+
 }
 

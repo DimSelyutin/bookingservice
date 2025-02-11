@@ -1,10 +1,11 @@
 package com.booking.entity.util;
-
-import com.booking.entity.Amenity;
 import lombok.*;
 
 import java.util.List;
 
+/**
+ * The class representing the search criteria.
+ */
 @Getter
 @Builder
 @NoArgsConstructor

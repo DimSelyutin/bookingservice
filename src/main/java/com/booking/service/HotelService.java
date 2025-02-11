@@ -9,59 +9,42 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * API сервиса для работы с {@link Hotel}.
+ * Service interface for managing hotels.
+ * This interface defines methods for retrieving, creating, and searching hotels.
  */
 @Service
 public interface HotelService {
 
     /**
-     * Получение данных о гостинице по ее идентификатору.
+     * Retrieves a hotel by its unique identifier.
      *
-     * @param id идентификатор гостиницы
-     * @return данные о гостинице
+     * @param id the unique identifier of the hotel. Must not be null.
+     * @return the Hotel object associated with the given ID, or null if not found.
      */
     Hotel getHotel(Integer id);
 
     /**
-     * Получить список гостиниц с учетом указанных индекса начала и размера.
+     * Retrieves a paginated list of all hotels.
      *
-     * @return список гостиниц, начиная с указанного индекса и с заданным размером
+     * @param pageRequest the pagination information including page number and size.
+     * @return a Page object containing a list of Hotel objects.
      */
     Page<Hotel> findAll(PageRequest pageRequest);
 
     /**
-     * Создание новой гостиницы.
+     * Creates a new hotel entry.
      *
-     * @param hotel данные для создания гостиницы
-     * @return данные созданной гостиницы
+     * @param hotel the Hotel object containing information about the hotel to be created.
+     *              Must not be null.
+     * @return the created Hotel object, including its generated ID.
      */
     Hotel createHotel(Hotel hotel);
 
-
-//    /**
-//     * Обновление информации о гостинице.
-//     *
-//     * @param id идентификатор гостиницы
-//     * @param hotel новые данные для обновления
-//     * @return обновленные данные о гостинице
-//     */
-//    Hotel updateHotel(Integer id, Hotel hotel);
-
     /**
-     * Получение списка всех гостиниц, соответствующих заданному статусу.
+     * Searches for hotels based on specified criteria.
      *
-     * @param status статус гостиницы
-     * @param page   начальный индекс
-     * @param size   размер списка
-     * @return список гостиниц с заданным статусом
-     */
-    Page<Hotel> getAllHotelsByStatus(String status, Integer page, Integer size);
-
-    /**
-     * Получение списка гостиниц по определенным фильтрам.
-     *
-     * @param criteria критерии для поиска гостиниц
-     * @return список гостиниц, соответствующих критериям фильтрации
+     * @param criteria the criteria used for searching hotels. Must not be null.
+     * @return a list of Hotel objects that match the specified criteria.
      */
     List<Hotel> searchHotelsByFilters(HotelSearchCriteria criteria);
 }

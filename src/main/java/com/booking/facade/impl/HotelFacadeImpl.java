@@ -19,6 +19,9 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Facade for Hotels.
+ */
 @Slf4j
 @Component
 @RequiredArgsConstructor
@@ -80,7 +83,7 @@ public class HotelFacadeImpl implements HotelFacade {
     @Override
     public List<HotelBrief> searchHotels(HotelSearchCriteriaDTO criteriaDTO) {
         log.debug("POST-request, searchHotels - start, criteria = {}", criteriaDTO);
-        
+
         HotelSearchCriteria criteria = hotelMapper.toHotelBriefSearchCriteria(criteriaDTO);
 
         List<Hotel> hotels = hotelService.searchHotelsByFilters(criteria);

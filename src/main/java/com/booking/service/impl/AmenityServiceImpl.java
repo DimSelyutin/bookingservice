@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * API сервиса для работы с {@link com.booking.entity.Amenity}.
+ * Service for managing amenities associated with hotels.
  */
 @Slf4j
 @RequiredArgsConstructor

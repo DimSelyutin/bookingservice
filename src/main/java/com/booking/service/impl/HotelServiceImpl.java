@@ -15,6 +15,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Service for managing hotels.
+ */
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -45,7 +48,6 @@ public class HotelServiceImpl implements HotelService {
      * {@inheritDoc}
      */
     @Override
-//    @Transactional
     public Hotel createHotel(@NotNull Hotel newHotel) {
         Hotel savedHotel = hotelRepository.save(newHotel);
         return savedHotel;
@@ -66,17 +68,10 @@ public class HotelServiceImpl implements HotelService {
                 criteria.getCountry(),
                 criteria.getAmenities()
         ));
-        
+
         log.debug("Found {} hotels matching the criteria.", hotels.size());
 
         return hotels;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Page<Hotel> getAllHotelsByStatus(String status, Integer page, Integer size) {
-        return null;
-    }
 }

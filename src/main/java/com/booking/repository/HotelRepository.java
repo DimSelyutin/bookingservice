@@ -8,16 +8,19 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+/**
+ * Repository interface for accessing and managing Hotel entities.
+ * This interface extends JpaRepository for basic CRUD operations
+ * and JpaSpecificationExecutor for advanced querying capabilities.
+ */
 @Repository
 public interface HotelRepository extends JpaRepository<Hotel, Integer>, JpaSpecificationExecutor<Hotel> {
 
     /**
-     * Поиск гостиницы по её имени.
+     * Retrieves a Hotel entity by its ID.
      *
-     * @param id имя гостиницы
-     * @return гостиница с указанным именем
+     * @param id the ID of the hotel to retrieve. Must not be null.
+     * @return an Optional containing the found Hotel, or empty if no hotel with the given ID exists.
      */
     Optional<Hotel> findById(@NotNull Integer id);
-
-
 }
