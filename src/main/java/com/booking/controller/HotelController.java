@@ -21,11 +21,11 @@ import java.util.Map;
 
 
 /**
- * Controller for operation of "/property-view/hotels/".
+ * Controller for operation of "/property-view/".
  */
 @RestController
 @Slf4j
-@RequestMapping("property-view/hotels")
+@RequestMapping("/property-view")
 @RequiredArgsConstructor
 @Validated
 public class HotelController implements PropertyViewApi {
@@ -42,7 +42,7 @@ public class HotelController implements PropertyViewApi {
      */
     @Override
     @Operation(summary = "The method of obtaining additional information about the hotel")
-    @GetMapping("/{id}")
+    @GetMapping("hotels/{id}")
     public ResponseEntity<HotelDetail> getHotelById(@PathVariable("id") Integer id) {
         log.debug("GET-request, getHotelById - start, hotel id = {}", id);
 
@@ -61,7 +61,7 @@ public class HotelController implements PropertyViewApi {
      */
     @Override
     @Operation(summary = "Метод получения списка гостиниц")
-    @GetMapping()
+    @GetMapping("/hotels")
     public ResponseEntity<List<HotelBrief>> getHotels(
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "10") Integer size) {
@@ -81,7 +81,7 @@ public class HotelController implements PropertyViewApi {
      * @* @param newHotel DTO with new hotel data
      */
     @Operation(summary = "Creation of a new hotel")
-    @PostMapping
+    @PostMapping("/hotels")
     public ResponseEntity<HotelBrief> createHotel(@RequestBody NewHotel newHotel) {
         log.debug("POST-request, createHotel - start, hotel = {}", newHotel);
 
@@ -97,7 +97,7 @@ public class HotelController implements PropertyViewApi {
      * @* @return DTO of the found hotel
      */
     @Operation(summary = "The method of searching for hotels by criteria")
-    @GetMapping("/search")
+    @GetMapping("/hotels/search")
     public ResponseEntity<List<HotelBrief>> searchHotels(@ModelAttribute HotelSearchCriteriaDTO criteriaDTO) {
         log.debug("GET-request, searchHotels - start, criteria = {}", criteriaDTO);
 
@@ -114,7 +114,7 @@ public class HotelController implements PropertyViewApi {
      * @return
      */
     @Operation(summary = "Adding amenities to the hotel")
-    @PostMapping("/{id}/amenities")
+    @PostMapping("/hotels/{id}/amenities")
     public ResponseEntity<Void> addAmenitiesToHotel(@PathVariable Integer id, @RequestBody List<String> amenities) {
         log.debug("POST-request, addAmenitiesToHotel - start, hotelId = {}, amenities = {}", id, amenities);
 
