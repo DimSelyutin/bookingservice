@@ -19,6 +19,6 @@ public class ArrivalTime {
     @Column(nullable = false)
     private LocalTime checkIn;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalTime checkOut;
 }

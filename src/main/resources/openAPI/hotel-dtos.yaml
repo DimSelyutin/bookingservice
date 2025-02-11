@@ -48,6 +48,7 @@ components:
         checkOut:
           type: string
           format: time
+          nullable: true
           example: "11:00"
       required:
         - checkIn
@@ -56,6 +57,6 @@ components:
       type: array
       items:
         type: string
-      example: ["Free WiFi", "Parking"]
+      example: [ "Free WiFi", "Parking" ]
 
       description: A list of amenities offered by the hotel.

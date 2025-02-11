@@ -67,6 +67,7 @@ public interface HotelMapper {
      * @param hotels list of Hotel entities to convert
      * @return list of converted HotelBrief DTOs
      */
+
     List<HotelBrief> toHotelBriefDtos(List<Hotel> hotels);
 
     /**
@@ -93,11 +94,10 @@ public interface HotelMapper {
         if (address == null) {
             return null;
         }
-        return address.getHouseNumber() + " " + String.join(", ",
+        return String.join(", ",
                 address.getStreet(),
                 address.getCity(),
-                address.getPostCode(),
-                address.getCountry()
+                address.getPostCode()
         );
     }
 }

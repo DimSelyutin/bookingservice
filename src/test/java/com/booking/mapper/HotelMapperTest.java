@@ -44,7 +44,7 @@ public class HotelMapperTest {
     public void whenListOfHotels_thenHotelBriefsShouldBeMapped() {
         // Given
         List<Hotel> hotels = createTestHotels(); // Используем метод из TestData
-        String fullAddress = "9 Pobediteley Avenue, Minsk, 220004, Belarus";
+        String fullAddress = "9 Pobediteley Avenue, Minsk, 220004";
 
         // When
         List<HotelBrief> dtos = hotelMapper.toHotelBriefDtos(hotels);
