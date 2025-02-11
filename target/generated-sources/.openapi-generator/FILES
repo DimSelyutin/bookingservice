@@ -1,0 +1,13 @@
+.openapi-generator-ignore
+README.md
+pom.xml
+src/main/java/com/booking/openapi/api/ApiUtil.java
+src/main/java/com/booking/openapi/api/PropertyViewApi.java
+src/main/java/com/booking/openapi/model/Address.java
+src/main/java/com/booking/openapi/model/ArrivalTime.java
+src/main/java/com/booking/openapi/model/Contact.java
+src/main/java/com/booking/openapi/model/ErrorDto.java
+src/main/java/com/booking/openapi/model/HotelBrief.java
+src/main/java/com/booking/openapi/model/HotelDetail.java
+src/main/java/com/booking/openapi/model/HotelSearchCriteriaDTO.java
+src/main/java/com/booking/openapi/model/NewHotel.java

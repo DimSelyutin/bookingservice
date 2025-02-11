@@ -25,7 +25,7 @@ import java.util.Map;
  */
 @RestController
 @Slf4j
-@RequestMapping("api/v1/property-view/hotels")
+@RequestMapping("property-view/hotels")
 @RequiredArgsConstructor
 @Validated
 public class HotelController implements PropertyViewApi {

@@ -45,7 +45,7 @@ public class HotelControllerTest {
 
     private NewHotel newHotel;
 
-    private static final String API_URL = "/api/v1/property-view/hotels";
+    private static final String API_URL = "/property-view/hotels";
 
     @BeforeEach
     public void setUp() throws Exception {

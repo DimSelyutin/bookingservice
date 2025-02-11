@@ -1,0 +1,53 @@
+databaseChangeLog:
+  - changeSet:
+      id: 005-add-foreign-key-constraints
+      author: DimSelyutin
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: hotels
+            baseColumnNames: address_id
+            referencedTableName: addresses
+            referencedColumnNames: id
+            constraintName: fk_hotels_address
+
+        - addForeignKeyConstraint:
+            baseTableName: hotels
+            baseColumnNames: contact_id
+            referencedTableName: contacts
+            referencedColumnNames: id
+            constraintName: fk_hotels_contact
+
+        - addForeignKeyConstraint:
+            baseTableName: hotels
+            baseColumnNames: arrival_time_id
+            referencedTableName: arrival_times
+            referencedColumnNames: id
+            constraintName: fk_hotels_arrival_time
+        - addForeignKeyConstraint:
+            baseTableName: hotel_amenities
+            baseColumnNames: hotel_id
+            referencedTableName: hotels
+            referencedColumnNames: id
+            constraintName: fk_hotel_amenities_hotels
+        - addForeignKeyConstraint:
+            baseTableName: hotel_amenities
+            baseColumnNames: amenity_id
+            referencedTableName: amenities
+            referencedColumnNames: id
+            constraintName: fk_hotel_amenities_amenities
+      rollback:
+        - dropForeignKeyConstraint:
+            baseTableName: hotels
+            constraintName: fk_hotels_address
+        - dropForeignKeyConstraint:
+            baseTableName: hotels
+            constraintName: fk_hotels_contact
+        - dropForeignKeyConstraint:
+            baseTableName: hotels
+            constraintName: fk_hotels_arrival_time
+        - dropForeignKeyConstraint:
+            baseTableName: hotels
+            constraintName: fk_hotel_amenities_hotels
+        - dropForeignKeyConstraint:
+            baseTableName: hotels
+            constraintName: fk_hotel_amenities_amenities

@@ -41,7 +41,7 @@ public interface HotelMapper {
             return Collections.emptyList();
         }
         return amenities.stream()
-                .map(Amenity::getName) // Здесь предполагается, что вам нужно именно имя удобства
+                .map(Amenity::getName)
                 .collect(Collectors.toList());
     }
 
@@ -67,7 +67,6 @@ public interface HotelMapper {
      * @param hotels list of Hotel entities to convert
      * @return list of converted HotelBrief DTOs
      */
-
     List<HotelBrief> toHotelBriefDtos(List<Hotel> hotels);
 
     /**
@@ -77,6 +76,7 @@ public interface HotelMapper {
      * @return the converted HotelBrief DTO
      */
     @Mapping(target = "phone", source = "hotel.contact.phone")
+    @Mapping(target = "address",  expression = "java(mapAddress(hotel.getAddress()))")
     HotelBrief toHotelBriefDto(Hotel hotel);
 
 
@@ -94,10 +94,11 @@ public interface HotelMapper {
         if (address == null) {
             return null;
         }
-        return String.join(", ",
+        return address.getHouseNumber() + " " + String.join(", ",
                 address.getStreet(),
                 address.getCity(),
-                address.getPostCode()
+                address.getPostCode(),
+                address.getCountry()
         );
     }
 }

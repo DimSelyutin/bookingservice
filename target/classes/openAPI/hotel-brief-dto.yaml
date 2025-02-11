@@ -1,0 +1,24 @@
+components:
+  schemas:
+    HotelBrief:
+      type: object
+      description: Brief dto
+      properties:
+        id:
+          type: string
+          format: integer
+        name:
+          type: string
+        description:
+          type: string
+        brand:
+          type: string
+        address:
+          type: string
+        phone:
+          type: string
+      required:
+        - name
+        - description
+        - address
+        - phone

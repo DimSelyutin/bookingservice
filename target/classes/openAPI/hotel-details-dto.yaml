@@ -1,0 +1,30 @@
+components:
+  schemas:
+    HotelDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the hotel.
+        name:
+          type: string
+          example: "Hotel California"
+          description: The name of the hotel.
+        brand:
+          type: string
+          example: "California Hotels"
+          description: The brand associated with the hotel.
+        address:
+          $ref: 'hotel-dtos.yaml#/components/schemas/Address'
+        contacts:
+          $ref: 'hotel-dtos.yaml#/components/schemas/Contact'
+        arrivalTime:
+          $ref: 'hotel-dtos.yaml#/components/schemas/ArrivalTime'
+        amenities:
+          $ref: 'hotel-dtos.yaml#/components/schemas/Amenities'
+      required:
+        - name
+        - brand
+        - contacts
+        - arrivalTime
+        - amenities

@@ -1,0 +1,62 @@
+components:
+  schemas:
+    Address:
+      type: object
+      properties:
+        houseNumber:
+          type: integer
+          example: 123
+        street:
+          type: string
+          example: "Main St"
+        city:
+          type: string
+          example: "Los Angeles"
+        country:
+          type: string
+          example: "Los Angeles Country"
+        postCode:
+          type: string
+          example: "90001"
+      required:
+        - houseNumber
+        - street
+        - city
+        - country
+        - postCode
+
+    Contact:
+      type: object
+      properties:
+        phone:
+          type: string
+          example: "+1-800-555-0123"
+        email:
+          type: string
+          example: "contact@hotelcalifornia.com"
+      required:
+        - phone
+        - email
+
+    ArrivalTime:
+      type: object
+      properties:
+        checkIn:
+          type: string
+          format: time
+          example: "15:00"
+        checkOut:
+          type: string
+          format: time
+          nullable: true
+          example: "11:00"
+      required:
+        - checkIn
+        - checkOut
+    Amenities:
+      type: array
+      items:
+        type: string
+      example: [ "Free WiFi", "Parking" ]
+
+      description: A list of amenities offered by the hotel.

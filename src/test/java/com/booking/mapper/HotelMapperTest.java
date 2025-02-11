@@ -6,7 +6,9 @@ import com.booking.openapi.model.HotelDetail;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
+
 import java.util.List;
+
 import static com.booking.util.TestData.createSingleTestHotel;
 import static com.booking.util.TestData.createTestHotels;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -43,8 +45,8 @@ public class HotelMapperTest {
     @Test
     public void whenListOfHotels_thenHotelBriefsShouldBeMapped() {
         // Given
-        List<Hotel> hotels = createTestHotels(); // Используем метод из TestData
-        String fullAddress = "9 Pobediteley Avenue, Minsk, 220004";
+        List<Hotel> hotels = createTestHotels();
+        String fullAddress = "9 Pobediteley Avenue, Minsk, 220004, Belarus";
 
         // When
         List<HotelBrief> dtos = hotelMapper.toHotelBriefDtos(hotels);

@@ -20,8 +20,9 @@ public class TestData {
     private static final String HOTEL_BRAND = "Hilton";
 
 
-    private static final String HOTEL_DETAIL_ADDRESS_STREET = "9 Pobediteley Avenue";
+    private static final String HOTEL_DETAIL_ADDRESS_STREET = "Pobediteley Avenue";
     private static final String HOTEL_DETAIL_ADDRESS_CITY = "Minsk";
+    private static final String HOTEL_DETAIL_COUNTRY = "Belarus";
     private static final String HOTEL_DETAIL_ADDRESS_POST_CODE = "220004";
 
     private static final String ARRIVAL_CHECK_IN = "14:00";
@@ -55,7 +56,7 @@ public class TestData {
         address.setHouseNumber(9);
         address.setPostCode(HOTEL_DETAIL_ADDRESS_POST_CODE);
         address.setStreet(HOTEL_DETAIL_ADDRESS_STREET);
-        address.setCountry(HOTEL_DETAIL_ADDRESS_STREET);
+        address.setCountry(HOTEL_DETAIL_COUNTRY);
         return address;
     }
 
@@ -65,7 +66,7 @@ public class TestData {
         address.setHouseNumber(9);
         address.setPostCode(HOTEL_DETAIL_ADDRESS_POST_CODE);
         address.setStreet(HOTEL_DETAIL_ADDRESS_STREET);
-        address.setCountry("Belarus");
+        address.setCountry(HOTEL_DETAIL_COUNTRY);
         return address;
     }
 
@@ -106,11 +107,11 @@ public class TestData {
 
     public static HotelDetail createTestHotelDetails() {
         HotelDetail hotelDetail = new HotelDetail();
-        hotelDetail.setId(1); // Уникальный идентификатор
-        hotelDetail.setName(HOTEL_NAME); // Имя отеля
-        hotelDetail.setBrand(HOTEL_BRAND); // Бренд отеля
+        hotelDetail.setId(1);
+        hotelDetail.setName(HOTEL_NAME);
+        hotelDetail.setBrand(HOTEL_BRAND);
 
-        // Настройка адреса
+
         com.booking.openapi.model.Address address = new com.booking.openapi.model.Address();
         address.setStreet(HOTEL_DETAIL_ADDRESS_STREET);
         address.setCity(HOTEL_DETAIL_ADDRESS_CITY);
@@ -118,21 +119,15 @@ public class TestData {
         address.setPostCode(HOTEL_DETAIL_ADDRESS_POST_CODE);
         hotelDetail.setAddress(address);
 
-        // Настройка контактов
         com.booking.openapi.model.Contact contact = new com.booking.openapi.model.Contact();
         contact.setPhone(HOTEL_PHONE);
         contact.setEmail(HOTEL_EMAIL);
         hotelDetail.setContacts(contact);
 
-        // Настройка времени прибытия
         ArrivalTime arrivalTime = new ArrivalTime();
         arrivalTime.setCheckIn(ARRIVAL_CHECK_IN);
         arrivalTime.setCheckOut(ARRIVAL_CHECK_OUT);
         hotelDetail.setArrivalTime(arrivalTime);
-//        AmenitiesInner amenity = new AmenitiesInner(1, "Free Wifi");
-//        AmenitiesInner amenity2 = new AmenitiesInner(2, "Free Parking");
-//        List<AmenitiesInner> amenities = List.of(amenity, amenity2);
-//        hotelDetail.setAmenities(amenities);
         hotelDetail.setAmenities(List.of("Free Parking", "Pool"));
 
         return hotelDetail;
