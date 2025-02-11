@@ -1,0 +1,5 @@
+com\booking\controller\HotelControllerTest.class
+com\booking\BookingApplicationTests.class
+com\booking\service\impl\HotelServiceImplTest.class
+com\booking\mapper\HotelMapperTest.class
+com\booking\util\TestData.class

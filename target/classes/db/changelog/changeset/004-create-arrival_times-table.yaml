@@ -1,0 +1,30 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004-create-arrival_times-table
+      author: DimSelyutin
+      changes:
+        - createTable:
+            tableName: arrival_times
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    autoIncrement: true
+                  defaultValue: "NEXT VALUE FOR arrival_sequence"
+
+              - column:
+                  name: check_in
+                  type: time
+                  constraints:
+                    nullable: false
+              - column:
+                  name: check_out
+                  type: time
+                  constraints:
+                    nullable: true
+      rollback:
+        - dropTable:
+            tableName: arrival_times

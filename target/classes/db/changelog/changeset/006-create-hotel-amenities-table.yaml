@@ -1,0 +1,21 @@
+databaseChangeLog:
+  - changeSet:
+      id: 006-create-hotel-amenities-table
+      author: DimSelyutin
+      changes:
+        - createTable:
+            tableName: hotel_amenities
+            columns:
+              - column:
+                  name: hotel_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amenity_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+      rollback:
+        - dropTable:
+            tableName: hotel_amenities

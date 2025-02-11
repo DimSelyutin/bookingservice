@@ -1,0 +1,30 @@
+components:
+  schemas:
+    NewHotel:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: false
+          example: "Hotel California"
+          description: The name of the hotel.
+        description:
+          type: string
+          nullable: true
+          example: "A lovely place with a warm atmosphere."
+          description: A brief description of the hotel.
+        brand:
+          type: string
+          example: "California Hotels"
+          description: The brand associated with the hotel.
+        address:
+          $ref: 'hotel-dtos.yaml#/components/schemas/Address'
+        contacts:
+          $ref: 'hotel-dtos.yaml#/components/schemas/Contact'
+        arrivalTime:
+          $ref: 'hotel-dtos.yaml#/components/schemas/ArrivalTime'
+      required:
+        - name
+        - brand
+        - contacts
+        - arrivalTime

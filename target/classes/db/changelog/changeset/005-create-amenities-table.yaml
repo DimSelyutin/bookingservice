@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 006-create-amenities-table
+      author: DimSelyutin
+      changes:
+        - createTable:
+            tableName: amenities
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    autoIncrement: true
+                  defaultValue: "NEXT VALUE FOR amenities_sequence"
+
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+      rollback:
+        - dropTable:
+            tableName: amenities

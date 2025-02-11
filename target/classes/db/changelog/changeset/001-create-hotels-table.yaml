@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-hotels-table
+      author: DimSelyutin
+      changes:
+        - createTable:
+            tableName: hotels
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                  defaultValue: "NEXT VALUE FOR hotel_sequence"
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: text
+                  constraints:
+                    nullable: true
+              - column:
+                  name: brand
+                  type: varchar(100)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: address_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: contact_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: arrival_time_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+      rollback:
+        - dropTable:
+            tableName: hotels

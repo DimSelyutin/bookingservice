@@ -1,0 +1,24 @@
+components:
+  schemas:
+    ErrorDto:
+      type: object
+      description: Represents the structure of an error response returned by the API.
+      properties:
+        errorCode:
+          type: integer
+          format: int32
+          description: A unique code indicating the type of error that occurred.
+          example: 404
+        errorMessage:
+          type: string
+          description: A human-readable description of the error, suitable for logging and debugging.
+          example: "Resource not found."
+        timestamp:
+          type: string
+          format: date-time
+          description: The time (in ISO 8601 format) when the error occurred.
+          example: "2023-10-05T14:48:00Z"
+      required:
+        - errorCode
+        - errorMessage
+        - timestamp
