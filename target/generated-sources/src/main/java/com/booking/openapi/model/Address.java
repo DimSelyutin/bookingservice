@@ -18,7 +18,7 @@ import jakarta.annotation.Generated;
  * Address
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-02-11T18:56:35.991525100+03:00[Europe/Moscow]", comments = "Generator version: 7.11.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-02-12T03:08:38.377363300+03:00[Europe/Moscow]", comments = "Generator version: 7.11.0")
 public class Address {
 
   private Integer houseNumber;

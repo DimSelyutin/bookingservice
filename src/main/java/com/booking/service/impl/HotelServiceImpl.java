@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -29,6 +30,8 @@ public class HotelServiceImpl implements HotelService {
     /**
      * {@inheritDoc}
      */
+
+    @Transactional(readOnly = true)
     @Override
     public Hotel getHotel(Integer id) throws HotelNotFoundException {
         return hotelRepository.findById(id)
@@ -38,6 +41,7 @@ public class HotelServiceImpl implements HotelService {
     /**
      * {@inheritDoc}
      */
+    @Transactional(readOnly = true)
     @Override
     public Page<Hotel> findAll(PageRequest page) {
         return hotelRepository.findAll(page);
@@ -47,6 +51,7 @@ public class HotelServiceImpl implements HotelService {
     /**
      * {@inheritDoc}
      */
+    @Transactional
     @Override
     public Hotel createHotel(@NotNull Hotel newHotel) {
         Hotel savedHotel = hotelRepository.save(newHotel);
@@ -56,6 +61,7 @@ public class HotelServiceImpl implements HotelService {
     /**
      * {@inheritDoc}
      */
+    @Transactional(readOnly = true)
     @Override
     public List<Hotel> searchHotelsByFilters(HotelSearchCriteria criteria) {
 

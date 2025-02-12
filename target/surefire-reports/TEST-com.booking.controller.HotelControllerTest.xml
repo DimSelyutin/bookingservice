@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.booking.controller.HotelControllerTest" time="10.622" tests="9" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.2" name="com.booking.controller.HotelControllerTest" time="7.805" tests="9" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="17"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -17,7 +17,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="RU"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17.0.5\bin"/>
-    <property name="sun.java.command" value="C:\Users\Dmitriy99\AppData\Local\Temp\surefire15791606846403118328\surefirebooter-20250211185651506_3.jar C:\Users\Dmitriy99\AppData\Local\Temp\surefire15791606846403118328 2025-02-11T18-56-51_340-jvmRun1 surefire-20250211185651506_1tmp surefire_0-20250211185651506_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Dmitriy99\AppData\Local\Temp\surefire130547810392200467\surefirebooter-20250212030902122_3.jar C:\Users\Dmitriy99\AppData\Local\Temp\surefire130547810392200467 2025-02-12T03-09-01_921-jvmRun1 surefire-20250212030902122_1tmp surefire_0-20250212030902122_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="F:\GitHub\Java\bookingservice\target\test-classes;F:\GitHub\Java\bookingservice\target\classes;C:\Users\Dmitriy99\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\3.4.2\spring-boot-starter-data-jpa-3.4.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\boot\spring-boot-starter\3.4.2\spring-boot-starter-3.4.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.4.2\spring-boot-starter-logging-3.4.2.jar;C:\Users\Dmitriy99\.m2\repository\ch\qos\logback\logback-classic\1.5.16\logback-classic-1.5.16.jar;C:\Users\Dmitriy99\.m2\repository\ch\qos\logback\logback-core\1.5.16\logback-core-1.5.16.jar;C:\Users\Dmitriy99\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.24.3\log4j-to-slf4j-2.24.3.jar;C:\Users\Dmitriy99\.m2\repository\org\apache\logging\log4j\log4j-api\2.24.3\log4j-api-2.24.3.jar;C:\Users\Dmitriy99\.m2\repository\org\slf4j\jul-to-slf4j\2.0.16\jul-to-slf4j-2.0.16.jar;C:\Users\Dmitriy99\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\3.4.2\spring-boot-starter-jdbc-3.4.2.jar;C:\Users\Dmitriy99\.m2\repository\com\zaxxer\HikariCP\5.1.0\HikariCP-5.1.0.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\spring-jdbc\6.2.2\spring-jdbc-6.2.2.jar;C:\Users\Dmitriy99\.m2\repository\org\hibernate\orm\hibernate-core\6.6.5.Final\hibernate-core-6.6.5.Final.jar;C:\Users\Dmitriy99\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\Dmitriy99\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\Dmitriy99\.m2\repository\org\jboss\logging\jboss-logging\3.6.1.Final\jboss-logging-3.6.1.Final.jar;C:\Users\Dmitriy99\.m2\repository\org\hibernate\common\hibernate-commons-annotations\7.0.3.Final\hibernate-commons-annotations-7.0.3.Final.jar;C:\Users\Dmitriy99\.m2\repository\io\smallrye\jandex\3.2.0\jandex-3.2.0.jar;C:\Users\Dmitriy99\.m2\repository\com\fasterxml\classmate\1.7.0\classmate-1.7.0.jar;C:\Users\Dmitriy99\.m2\repository\net\bytebuddy\byte-buddy\1.15.11\byte-buddy-1.15.11.jar;C:\Users\Dmitriy99\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.5\jaxb-runtime-4.0.5.jar;C:\Users\Dmitriy99\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.5\jaxb-core-4.0.5.jar;C:\Users\Dmitriy99\.m2\repository\org\eclipse\angus\angus-activation\2.0.2\angus-activation-2.0.2.jar;C:\Users\Dmitriy99\.m2\repository\org\glassfish\jaxb\txw2\4.0.5\txw2-4.0.5.jar;C:\Users\Dmitriy99\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\Dmitriy99\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\Dmitriy99\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\data\spring-data-jpa\3.4.2\spring-data-jpa-3.4.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\data\spring-data-commons\3.4.2\spring-data-commons-3.4.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\spring-orm\6.2.2\spring-orm-6.2.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\spring-context\6.2.2\spring-context-6.2.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\spring-aop\6.2.2\spring-aop-6.2.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\spring-tx\6.2.2\spring-tx-6.2.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\spring-beans\6.2.2\spring-beans-6.2.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\spring-aspects\6.2.2\spring-aspects-6.2.2.jar;C:\Users\Dmitriy99\.m2\repository\org\aspectj\aspectjweaver\1.9.22.1\aspectjweaver-1.9.22.1.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.4.2\spring-boot-starter-web-3.4.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.4.2\spring-boot-starter-json-3.4.2.jar;C:\Users\Dmitriy99\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.18.2\jackson-datatype-jdk8-2.18.2.jar;C:\Users\Dmitriy99\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.18.2\jackson-datatype-jsr310-2.18.2.jar;C:\Users\Dmitriy99\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.18.2\jackson-module-parameter-names-2.18.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.4.2\spring-boot-starter-tomcat-3.4.2.jar;C:\Users\Dmitriy99\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.34\tomcat-embed-core-10.1.34.jar;C:\Users\Dmitriy99\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.34\tomcat-embed-el-10.1.34.jar;C:\Users\Dmitriy99\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.34\tomcat-embed-websocket-10.1.34.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\spring-web\6.2.2\spring-web-6.2.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\spring-webmvc\6.2.2\spring-webmvc-6.2.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\spring-expression\6.2.2\spring-expression-6.2.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\boot\spring-boot-starter-actuator\3.4.2\spring-boot-starter-actuator-3.4.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\boot\spring-boot-actuator-autoconfigure\3.4.2\spring-boot-actuator-autoconfigure-3.4.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\boot\spring-boot-actuator\3.4.2\spring-boot-actuator-3.4.2.jar;C:\Users\Dmitriy99\.m2\repository\io\micrometer\micrometer-observation\1.14.3\micrometer-observation-1.14.3.jar;C:\Users\Dmitriy99\.m2\repository\io\micrometer\micrometer-commons\1.14.3\micrometer-commons-1.14.3.jar;C:\Users\Dmitriy99\.m2\repository\io\micrometer\micrometer-jakarta9\1.14.3\micrometer-jakarta9-1.14.3.jar;C:\Users\Dmitriy99\.m2\repository\io\micrometer\micrometer-core\1.14.3\micrometer-core-1.14.3.jar;C:\Users\Dmitriy99\.m2\repository\org\hdrhistogram\HdrHistogram\2.2.2\HdrHistogram-2.2.2.jar;C:\Users\Dmitriy99\.m2\repository\org\latencyutils\LatencyUtils\2.0.3\LatencyUtils-2.0.3.jar;C:\Users\Dmitriy99\.m2\repository\org\liquibase\liquibase-core\4.29.2\liquibase-core-4.29.2.jar;C:\Users\Dmitriy99\.m2\repository\com\opencsv\opencsv\5.9\opencsv-5.9.jar;C:\Users\Dmitriy99\.m2\repository\org\yaml\snakeyaml\2.3\snakeyaml-2.3.jar;C:\Users\Dmitriy99\.m2\repository\javax\xml\bind\jaxb-api\2.3.1\jaxb-api-2.3.1.jar;C:\Users\Dmitriy99\.m2\repository\commons-io\commons-io\2.16.1\commons-io-2.16.1.jar;C:\Users\Dmitriy99\.m2\repository\org\apache\commons\commons-collections4\4.4\commons-collections4-4.4.jar;C:\Users\Dmitriy99\.m2\repository\org\apache\commons\commons-text\1.12.0\commons-text-1.12.0.jar;C:\Users\Dmitriy99\.m2\repository\org\apache\commons\commons-lang3\3.17.0\commons-lang3-3.17.0.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\boot\spring-boot-devtools\3.4.2\spring-boot-devtools-3.4.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\boot\spring-boot\3.4.2\spring-boot-3.4.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.4.2\spring-boot-autoconfigure-3.4.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springdoc\springdoc-openapi-starter-webmvc-ui\2.3.0\springdoc-openapi-starter-webmvc-ui-2.3.0.jar;C:\Users\Dmitriy99\.m2\repository\org\springdoc\springdoc-openapi-starter-webmvc-api\2.3.0\springdoc-openapi-starter-webmvc-api-2.3.0.jar;C:\Users\Dmitriy99\.m2\repository\org\springdoc\springdoc-openapi-starter-common\2.3.0\springdoc-openapi-starter-common-2.3.0.jar;C:\Users\Dmitriy99\.m2\repository\io\swagger\core\v3\swagger-core-jakarta\2.2.19\swagger-core-jakarta-2.2.19.jar;C:\Users\Dmitriy99\.m2\repository\io\swagger\core\v3\swagger-annotations-jakarta\2.2.19\swagger-annotations-jakarta-2.2.19.jar;C:\Users\Dmitriy99\.m2\repository\io\swagger\core\v3\swagger-models-jakarta\2.2.19\swagger-models-jakarta-2.2.19.jar;C:\Users\Dmitriy99\.m2\repository\com\fasterxml\jackson\dataformat\jackson-dataformat-yaml\2.18.2\jackson-dataformat-yaml-2.18.2.jar;C:\Users\Dmitriy99\.m2\repository\org\webjars\swagger-ui\5.10.3\swagger-ui-5.10.3.jar;C:\Users\Dmitriy99\.m2\repository\org\openapitools\jackson-databind-nullable\0.2.1\jackson-databind-nullable-0.2.1.jar;C:\Users\Dmitriy99\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.18.2\jackson-databind-2.18.2.jar;C:\Users\Dmitriy99\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.18.2\jackson-annotations-2.18.2.jar;C:\Users\Dmitriy99\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.18.2\jackson-core-2.18.2.jar;C:\Users\Dmitriy99\.m2\repository\org\postgresql\postgresql\42.7.5\postgresql-42.7.5.jar;C:\Users\Dmitriy99\.m2\repository\org\checkerframework\checker-qual\3.48.3\checker-qual-3.48.3.jar;C:\Users\Dmitriy99\.m2\repository\com\h2database\h2\2.3.232\h2-2.3.232.jar;C:\Users\Dmitriy99\.m2\repository\org\projectlombok\lombok\1.18.36\lombok-1.18.36.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.4.2\spring-boot-starter-test-3.4.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\boot\spring-boot-test\3.4.2\spring-boot-test-3.4.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.4.2\spring-boot-test-autoconfigure-3.4.2.jar;C:\Users\Dmitriy99\.m2\repository\com\jayway\jsonpath\json-path\2.9.0\json-path-2.9.0.jar;C:\Users\Dmitriy99\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.2\jakarta.xml.bind-api-4.0.2.jar;C:\Users\Dmitriy99\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.3\jakarta.activation-api-2.1.3.jar;C:\Users\Dmitriy99\.m2\repository\net\minidev\json-smart\2.5.1\json-smart-2.5.1.jar;C:\Users\Dmitriy99\.m2\repository\net\minidev\accessors-smart\2.5.1\accessors-smart-2.5.1.jar;C:\Users\Dmitriy99\.m2\repository\org\ow2\asm\asm\9.6\asm-9.6.jar;C:\Users\Dmitriy99\.m2\repository\org\assertj\assertj-core\3.26.3\assertj-core-3.26.3.jar;C:\Users\Dmitriy99\.m2\repository\org\awaitility\awaitility\4.2.2\awaitility-4.2.2.jar;C:\Users\Dmitriy99\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\Dmitriy99\.m2\repository\org\junit\jupiter\junit-jupiter\5.11.4\junit-jupiter-5.11.4.jar;C:\Users\Dmitriy99\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.11.4\junit-jupiter-params-5.11.4.jar;C:\Users\Dmitriy99\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.4\junit-jupiter-engine-5.11.4.jar;C:\Users\Dmitriy99\.m2\repository\org\junit\platform\junit-platform-engine\1.11.4\junit-platform-engine-1.11.4.jar;C:\Users\Dmitriy99\.m2\repository\org\mockito\mockito-core\5.14.2\mockito-core-5.14.2.jar;C:\Users\Dmitriy99\.m2\repository\net\bytebuddy\byte-buddy-agent\1.15.11\byte-buddy-agent-1.15.11.jar;C:\Users\Dmitriy99\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\Dmitriy99\.m2\repository\org\mockito\mockito-junit-jupiter\5.14.2\mockito-junit-jupiter-5.14.2.jar;C:\Users\Dmitriy99\.m2\repository\org\skyscreamer\jsonassert\1.5.3\jsonassert-1.5.3.jar;C:\Users\Dmitriy99\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\spring-core\6.2.2\spring-core-6.2.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\spring-jcl\6.2.2\spring-jcl-6.2.2.jar;C:\Users\Dmitriy99\.m2\repository\org\springframework\spring-test\6.2.2\spring-test-6.2.2.jar;C:\Users\Dmitriy99\.m2\repository\org\xmlunit\xmlunit-core\2.10.0\xmlunit-core-2.10.0.jar;C:\Users\Dmitriy99\.m2\repository\org\mapstruct\mapstruct\1.6.3\mapstruct-1.6.3.jar;C:\Users\Dmitriy99\.m2\repository\org\mapstruct\mapstruct-processor\1.6.3\mapstruct-processor-1.6.3.jar;C:\Users\Dmitriy99\.m2\repository\io\swagger\swagger-annotations\1.6.11\swagger-annotations-1.6.11.jar;C:\Users\Dmitriy99\.m2\repository\jakarta\validation\jakarta.validation-api\3.1.1\jakarta.validation-api-3.1.1.jar;C:\Users\Dmitriy99\.m2\repository\org\testcontainers\testcontainers\1.20.4\testcontainers-1.20.4.jar;C:\Users\Dmitriy99\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Dmitriy99\.m2\repository\org\hamcrest\hamcrest-core\2.2\hamcrest-core-2.2.jar;C:\Users\Dmitriy99\.m2\repository\org\slf4j\slf4j-api\2.0.16\slf4j-api-2.0.16.jar;C:\Users\Dmitriy99\.m2\repository\org\apache\commons\commons-compress\1.24.0\commons-compress-1.24.0.jar;C:\Users\Dmitriy99\.m2\repository\org\rnorth\duct-tape\duct-tape\1.0.8\duct-tape-1.0.8.jar;C:\Users\Dmitriy99\.m2\repository\org\jetbrains\annotations\17.0.0\annotations-17.0.0.jar;C:\Users\Dmitriy99\.m2\repository\com\github\docker-java\docker-java-api\3.4.0\docker-java-api-3.4.0.jar;C:\Users\Dmitriy99\.m2\repository\com\github\docker-java\docker-java-transport-zerodep\3.4.0\docker-java-transport-zerodep-3.4.0.jar;C:\Users\Dmitriy99\.m2\repository\com\github\docker-java\docker-java-transport\3.4.0\docker-java-transport-3.4.0.jar;C:\Users\Dmitriy99\.m2\repository\net\java\dev\jna\jna\5.13.0\jna-5.13.0.jar;C:\Users\Dmitriy99\.m2\repository\org\testcontainers\junit-jupiter\1.17.3\junit-jupiter-1.17.3.jar;C:\Users\Dmitriy99\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.4\junit-jupiter-api-5.11.4.jar;C:\Users\Dmitriy99\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Dmitriy99\.m2\repository\org\junit\platform\junit-platform-commons\1.11.4\junit-platform-commons-1.11.4.jar;C:\Users\Dmitriy99\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Dmitriy99\.m2\repository\org\testcontainers\postgresql\1.17.3\postgresql-1.17.3.jar;C:\Users\Dmitriy99\.m2\repository\org\testcontainers\jdbc\1.20.4\jdbc-1.20.4.jar;C:\Users\Dmitriy99\.m2\repository\org\testcontainers\database-commons\1.20.4\database-commons-1.20.4.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -34,7 +34,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="FILE_LOG_CHARSET" value="windows-1251"/>
     <property name="java.awt.headless" value="true"/>
-    <property name="surefire.real.class.path" value="C:\Users\Dmitriy99\AppData\Local\Temp\surefire15791606846403118328\surefirebooter-20250211185651506_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Dmitriy99\AppData\Local\Temp\surefire130547810392200467\surefirebooter-20250212030902122_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="17.0.5+9-LTS-191"/>
@@ -52,7 +52,7 @@
     <property name="user.dir" value="F:\GitHub\Java\bookingservice"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="PID" value="6060"/>
+    <property name="PID" value="10312"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="CONSOLE_LOG_CHARSET" value="windows-1251"/>
     <property name="native.encoding" value="Cp1251"/>
@@ -64,10 +64,10 @@
     <property name="java.class.version" value="61.0"/>
     <property name="LOGGED_APPLICATION_NAME" value="[booking] "/>
   </properties>
-  <testcase name="createHotel_ShouldReturnCreated" classname="com.booking.controller.HotelControllerTest" time="4.967">
-    <system-out><![CDATA[2025-02-11T18:57:12.111+03:00  INFO 6060 --- [booking] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.booking.controller.HotelControllerTest]: HotelControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2025-02-11T18:57:12.191+03:00  INFO 6060 --- [booking] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.booking.BookingApplication for test class com.booking.controller.HotelControllerTest
-2025-02-11T18:57:12.277+03:00  INFO 6060 --- [booking] [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
+  <testcase name="createHotel_ShouldReturnCreated" classname="com.booking.controller.HotelControllerTest" time="1.024">
+    <system-out><![CDATA[2025-02-12T03:09:24.116+03:00  INFO 10312 --- [booking] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.booking.controller.HotelControllerTest]: HotelControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-02-12T03:09:24.158+03:00  INFO 10312 --- [booking] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.booking.BookingApplication for test class com.booking.controller.HotelControllerTest
+2025-02-12T03:09:24.168+03:00  INFO 10312 --- [booking] [           main] o.s.b.d.r.RestartApplicationListener     : Restart disabled due to context in which it is running
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -78,30 +78,30 @@
 
  :: Spring Boot ::                (v3.4.2)
 
-2025-02-11T18:57:12.347+03:00  INFO 6060 --- [booking] [           main] c.b.controller.HotelControllerTest       : Starting HotelControllerTest using Java 17.0.5 with PID 6060 (started by Dmitriy99 in F:\GitHub\Java\bookingservice)
-2025-02-11T18:57:12.348+03:00  INFO 6060 --- [booking] [           main] c.b.controller.HotelControllerTest       : The following 1 profile is active: "H2"
-2025-02-11T18:57:13.099+03:00  INFO 6060 --- [booking] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-02-11T18:57:13.141+03:00  INFO 6060 --- [booking] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 38 ms. Found 3 JPA repository interfaces.
-2025-02-11T18:57:13.322+03:00  INFO 6060 --- [booking] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2025-02-11T18:57:13.324+03:00  INFO 6060 --- [booking] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn3: url=jdbc:h2:mem:testdb user=SA
-2025-02-11T18:57:13.324+03:00  INFO 6060 --- [booking] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2025-02-11T18:57:13.326+03:00  INFO 6060 --- [booking] [           main] liquibase.database                       : Set default schema name to PUBLIC
-2025-02-11T18:57:13.437+03:00  INFO 6060 --- [booking] [           main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
-2025-02-11T18:57:13.492+03:00  INFO 6060 --- [booking] [           main] liquibase.ui                             : Database is up to date, no changesets to execute
-2025-02-11T18:57:13.493+03:00  INFO 6060 --- [booking] [           main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
-2025-02-11T18:57:13.499+03:00  INFO 6060 --- [booking] [           main] liquibase.util                           : UPDATE SUMMARY
-2025-02-11T18:57:13.500+03:00  INFO 6060 --- [booking] [           main] liquibase.util                           : Run:                          0
-2025-02-11T18:57:13.500+03:00  INFO 6060 --- [booking] [           main] liquibase.util                           : Previously run:               8
-2025-02-11T18:57:13.500+03:00  INFO 6060 --- [booking] [           main] liquibase.util                           : Filtered out:                 0
-2025-02-11T18:57:13.500+03:00  INFO 6060 --- [booking] [           main] liquibase.util                           : -------------------------------
-2025-02-11T18:57:13.500+03:00  INFO 6060 --- [booking] [           main] liquibase.util                           : Total change sets:            8
-2025-02-11T18:57:13.500+03:00  INFO 6060 --- [booking] [           main] liquibase.util                           : Update summary generated
-2025-02-11T18:57:13.501+03:00  INFO 6060 --- [booking] [           main] liquibase.command                        : Command execution complete
-2025-02-11T18:57:13.586+03:00  INFO 6060 --- [booking] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-02-11T18:57:13.591+03:00  INFO 6060 --- [booking] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2025-02-11T18:57:13.618+03:00  INFO 6060 --- [booking] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-02-11T18:57:13.621+03:00  WARN 6060 --- [booking] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-02-11T18:57:13.621+03:00  INFO 6060 --- [booking] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2025-02-12T03:09:24.376+03:00  INFO 10312 --- [booking] [           main] c.b.controller.HotelControllerTest       : Starting HotelControllerTest using Java 17.0.5 with PID 10312 (started by Dmitriy99 in F:\GitHub\Java\bookingservice)
+2025-02-12T03:09:24.377+03:00  INFO 10312 --- [booking] [           main] c.b.controller.HotelControllerTest       : The following 1 profile is active: "H2"
+2025-02-12T03:09:25.583+03:00  INFO 10312 --- [booking] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-02-12T03:09:25.633+03:00  INFO 10312 --- [booking] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 3 JPA repository interfaces.
+2025-02-12T03:09:25.861+03:00  INFO 10312 --- [booking] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-02-12T03:09:25.862+03:00  INFO 10312 --- [booking] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn3: url=jdbc:h2:mem:testdb user=SA
+2025-02-12T03:09:25.863+03:00  INFO 10312 --- [booking] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-02-12T03:09:25.867+03:00  INFO 10312 --- [booking] [           main] liquibase.database                       : Set default schema name to PUBLIC
+2025-02-12T03:09:26.023+03:00  INFO 10312 --- [booking] [           main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2025-02-12T03:09:26.058+03:00  INFO 10312 --- [booking] [           main] liquibase.ui                             : Database is up to date, no changesets to execute
+2025-02-12T03:09:26.059+03:00  INFO 10312 --- [booking] [           main] liquibase.changelog                      : Reading from PUBLIC.DATABASECHANGELOG
+2025-02-12T03:09:26.067+03:00  INFO 10312 --- [booking] [           main] liquibase.util                           : UPDATE SUMMARY
+2025-02-12T03:09:26.068+03:00  INFO 10312 --- [booking] [           main] liquibase.util                           : Run:                          0
+2025-02-12T03:09:26.068+03:00  INFO 10312 --- [booking] [           main] liquibase.util                           : Previously run:               8
+2025-02-12T03:09:26.068+03:00  INFO 10312 --- [booking] [           main] liquibase.util                           : Filtered out:                 0
+2025-02-12T03:09:26.068+03:00  INFO 10312 --- [booking] [           main] liquibase.util                           : -------------------------------
+2025-02-12T03:09:26.068+03:00  INFO 10312 --- [booking] [           main] liquibase.util                           : Total change sets:            8
+2025-02-12T03:09:26.069+03:00  INFO 10312 --- [booking] [           main] liquibase.util                           : Update summary generated
+2025-02-12T03:09:26.069+03:00  INFO 10312 --- [booking] [           main] liquibase.command                        : Command execution complete
+2025-02-12T03:09:26.147+03:00  INFO 10312 --- [booking] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-02-12T03:09:26.156+03:00  INFO 10312 --- [booking] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-02-12T03:09:26.196+03:00  INFO 10312 --- [booking] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-02-12T03:09:26.199+03:00  WARN 10312 --- [booking] [           main] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-02-12T03:09:26.199+03:00  INFO 10312 --- [booking] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
 	Database driver: undefined/unknown
 	Database version: 2.3.232
@@ -109,16 +109,16 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-02-11T18:57:13.933+03:00  INFO 6060 --- [booking] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-02-11T18:57:13.933+03:00  INFO 6060 --- [booking] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-02-11T18:57:14.747+03:00  WARN 6060 --- [booking] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-02-11T18:57:14.810+03:00  INFO 6060 --- [booking] [           main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
-2025-02-11T18:57:15.391+03:00  INFO 6060 --- [booking] [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
-2025-02-11T18:57:15.493+03:00  INFO 6060 --- [booking] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
-2025-02-11T18:57:15.493+03:00  INFO 6060 --- [booking] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
-2025-02-11T18:57:15.548+03:00  INFO 6060 --- [booking] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2025-02-11T18:57:15.639+03:00  INFO 6060 --- [booking] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 144 ms
-2025-02-11T18:57:15.735+03:00  INFO 6060 --- [booking] [           main] c.b.controller.HotelControllerTest       : Started HotelControllerTest in 3.459 seconds (process running for 23.908)
+2025-02-12T03:09:26.440+03:00  INFO 10312 --- [booking] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-02-12T03:09:26.441+03:00  INFO 10312 --- [booking] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-02-12T03:09:26.920+03:00  WARN 10312 --- [booking] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-02-12T03:09:26.990+03:00  INFO 10312 --- [booking] [           main] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2025-02-12T03:09:27.894+03:00  INFO 10312 --- [booking] [           main] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:testdb'
+2025-02-12T03:09:28.129+03:00  INFO 10312 --- [booking] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-02-12T03:09:28.129+03:00  INFO 10312 --- [booking] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-02-12T03:09:28.138+03:00  INFO 10312 --- [booking] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2025-02-12T03:09:28.174+03:00  INFO 10312 --- [booking] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 44 ms
+2025-02-12T03:09:28.283+03:00  INFO 10312 --- [booking] [           main] c.b.controller.HotelControllerTest       : Started HotelControllerTest in 4.116 seconds (process running for 25.832)
 Hibernate: 
     select
         next value for hotel_sequence
@@ -161,7 +161,7 @@ Hibernate:
         (?, ?, ?, ?, ?, ?, ?)
 ]]></system-out>
   </testcase>
-  <testcase name="getHotelById_NotFound_ShouldReturn404" classname="com.booking.controller.HotelControllerTest" time="0.273">
+  <testcase name="getHotelById_NotFound_ShouldReturn404" classname="com.booking.controller.HotelControllerTest" time="0.209">
     <system-out><![CDATA[Hibernate: 
     select
         h1_0.id,
@@ -196,12 +196,24 @@ Hibernate:
             on c1_0.id=h1_0.contact_id 
     where
         h1_0.id=?
-2025-02-11T18:57:21.327+03:00 ERROR 6060 --- [booking] [           main] c.b.c.advice.GlobalExceptionHandler      : HotelNotFoundException caught: Hotel with id 999 not found!
+2025-02-12T03:09:29.990+03:00 ERROR 10312 --- [booking] [           main] c.b.c.advice.GlobalExceptionHandler      : HotelNotFoundException caught: Hotel with id 999 not found!
 
 com.booking.exception.HotelNotFoundException: Hotel with id 999 not found!
-	at com.booking.service.impl.HotelServiceImpl.lambda$getHotel$0(HotelServiceImpl.java:35) ~[classes/:na]
+	at com.booking.service.impl.HotelServiceImpl.lambda$getHotel$0(HotelServiceImpl.java:38) ~[classes/:na]
 	at java.base/java.util.Optional.orElseThrow(Optional.java:403) ~[na:na]
-	at com.booking.service.impl.HotelServiceImpl.getHotel(HotelServiceImpl.java:35) ~[classes/:na]
+	at com.booking.service.impl.HotelServiceImpl.getHotel(HotelServiceImpl.java:38) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-6.2.2.jar:6.2.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.2.2.jar:6.2.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.2.2.jar:6.2.2]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:380) ~[spring-tx-6.2.2.jar:6.2.2]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.2.2.jar:6.2.2]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.2.2.jar:6.2.2]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:727) ~[spring-aop-6.2.2.jar:6.2.2]
+	at com.booking.service.impl.HotelServiceImpl$$SpringCGLIB$$0.getHotel(<generated>) ~[classes/:na]
 	at com.booking.facade.impl.HotelFacadeImpl.getHotel(HotelFacadeImpl.java:40) ~[classes/:na]
 	at com.booking.controller.HotelController.getHotelById(HotelController.java:49) ~[classes/:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
@@ -316,8 +328,8 @@ com.booking.exception.HotelNotFoundException: Hotel with id 999 not found!
 
 ]]></system-out>
   </testcase>
-  <testcase name="getHotelById_InternalServerError_ShouldReturn500" classname="com.booking.controller.HotelControllerTest" time="0.112">
-    <system-out><![CDATA[2025-02-11T18:57:21.453+03:00 ERROR 6060 --- [booking] [           main] c.b.c.advice.GlobalExceptionHandler      : RuntimeException caught: Method parameter 'id': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "string"
+  <testcase name="getHotelById_InternalServerError_ShouldReturn500" classname="com.booking.controller.HotelControllerTest" time="0.243">
+    <system-out><![CDATA[2025-02-12T03:09:30.126+03:00 ERROR 10312 --- [booking] [           main] c.b.c.advice.GlobalExceptionHandler      : RuntimeException caught: Method parameter 'id': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "string"
 
 org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'id': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "string"
 	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.convertIfNecessary(AbstractNamedValueMethodArgumentResolver.java:301) ~[spring-web-6.2.2.jar:6.2.2]
@@ -445,7 +457,7 @@ Caused by: java.lang.NumberFormatException: For input string: "string"
 
 ]]></system-out>
   </testcase>
-  <testcase name="addAmenitiesToHotel_ShouldReturnNoContent" classname="com.booking.controller.HotelControllerTest" time="0.585">
+  <testcase name="addAmenitiesToHotel_ShouldReturnNoContent" classname="com.booking.controller.HotelControllerTest" time="0.655">
     <system-out><![CDATA[Hibernate: 
     select
         h1_0.id,
@@ -530,19 +542,6 @@ Hibernate:
     values
         (?, ?)
 Hibernate: 
-    delete 
-    from
-        hotel_amenities 
-    where
-        hotel_id=?
-Hibernate: 
-    insert 
-    into
-        hotel_amenities
-        (hotel_id, amenity_id) 
-    values
-        (?, ?)
-Hibernate: 
     insert 
     into
         hotel_amenities
@@ -551,8 +550,8 @@ Hibernate:
         (?, ?)
 ]]></system-out>
   </testcase>
-  <testcase name="testGetHotelHistogramCity" classname="com.booking.controller.HotelControllerTest" time="0.217">
-    <system-out><![CDATA[2025-02-11T18:57:22.266+03:00  INFO 6060 --- [booking] [           main] com.booking.enums.HistogramParam         : Executing method for parameter: city
+  <testcase name="testGetHotelHistogramCity" classname="com.booking.controller.HotelControllerTest" time="0.322">
+    <system-out><![CDATA[2025-02-12T03:09:31.175+03:00  INFO 10312 --- [booking] [           main] com.booking.enums.HistogramParam         : Executing method for parameter: city
 Hibernate: 
     select
         a1_0.city,
@@ -564,10 +563,10 @@ Hibernate:
             on a1_0.id=h1_0.address_id 
     group by
         a1_0.city
-2025-02-11T18:57:22.321+03:00  INFO 6060 --- [booking] [           main] com.booking.enums.HistogramParam         : Result for parameter city: {Minsk=1}
+2025-02-12T03:09:31.198+03:00  INFO 10312 --- [booking] [           main] com.booking.enums.HistogramParam         : Result for parameter city: {Minsk=1}
 ]]></system-out>
   </testcase>
-  <testcase name="getHotels_ShouldReturnListOfHotelBrief" classname="com.booking.controller.HotelControllerTest" time="0.107">
+  <testcase name="getHotels_ShouldReturnListOfHotelBrief" classname="com.booking.controller.HotelControllerTest" time="0.219">
     <system-out><![CDATA[Hibernate: 
     select
         h1_0.id,
@@ -615,7 +614,7 @@ Hibernate:
         c1_0.id=?
 ]]></system-out>
   </testcase>
-  <testcase name="getHotelById_ShouldReturnHotelDetail" classname="com.booking.controller.HotelControllerTest" time="0.077">
+  <testcase name="getHotelById_ShouldReturnHotelDetail" classname="com.booking.controller.HotelControllerTest" time="0.217">
     <system-out><![CDATA[Hibernate: 
     select
         h1_0.id,
@@ -662,7 +661,7 @@ Hibernate:
             on a1_1.id=a1_0.amenity_id 
     where
         a1_0.hotel_id=?
-2025-02-11T18:57:22.542+03:00  INFO 6060 --- [booking] [           main] com.booking.controller.HotelController   : GET-request, getHotelById - end, response = <200 OK OK,class HotelDetail {
+2025-02-12T03:09:31.603+03:00  INFO 10312 --- [booking] [           main] com.booking.controller.HotelController   : GET-request, getHotelById - end, response = <200 OK OK,class HotelDetail {
     id: 1
     name: DoubleTree by Hilton Minsk
     brand: Hilton
@@ -685,7 +684,7 @@ Hibernate:
 },[]>
 ]]></system-out>
   </testcase>
-  <testcase name="testSearchHotels" classname="com.booking.controller.HotelControllerTest" time="0.108">
+  <testcase name="testSearchHotels" classname="com.booking.controller.HotelControllerTest" time="0.115">
     <system-out><![CDATA[Hibernate: 
     select
         h1_0.id,
@@ -743,8 +742,8 @@ Hibernate:
         c1_0.id=?
 ]]></system-out>
   </testcase>
-  <testcase name="testGetHotelHistogramAmenities" classname="com.booking.controller.HotelControllerTest" time="0.036">
-    <system-out><![CDATA[2025-02-11T18:57:22.702+03:00  INFO 6060 --- [booking] [           main] com.booking.enums.HistogramParam         : Executing method for parameter: amenities
+  <testcase name="testGetHotelHistogramAmenities" classname="com.booking.controller.HotelControllerTest" time="0.044">
+    <system-out><![CDATA[2025-02-12T03:09:31.894+03:00  INFO 10312 --- [booking] [           main] com.booking.enums.HistogramParam         : Executing method for parameter: amenities
 Hibernate: 
     select
         a1_1.name,
@@ -759,7 +758,7 @@ Hibernate:
             on a1_1.id=a1_0.amenity_id 
     group by
         a1_1.name
-2025-02-11T18:57:22.708+03:00  INFO 6060 --- [booking] [           main] com.booking.enums.HistogramParam         : Result for parameter amenities: {Swimming Pool=1, Free WiFi=1}
+2025-02-12T03:09:31.900+03:00  INFO 10312 --- [booking] [           main] com.booking.enums.HistogramParam         : Result for parameter amenities: {Swimming Pool=1, Free WiFi=1}
 ]]></system-out>
   </testcase>
 </testsuite>
