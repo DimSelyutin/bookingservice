@@ -28,9 +28,6 @@ class HotelMapperTest {
     public void setUp() {
         addressMapper = Mappers.getMapper(AddressMapper.class);
         hotelMapper = new HotelMapperImpl(addressMapper);
-        cityMapper = Mappers.getMapper(CityMapper.class);
-        streetMapper = Mappers.getMapper(StreetMapper.class);
-        countryMapper = Mappers.getMapper(CountryMapper.class);
     }
 
     @Test
