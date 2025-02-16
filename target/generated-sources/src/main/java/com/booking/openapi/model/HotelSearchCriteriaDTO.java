@@ -21,7 +21,7 @@ import jakarta.annotation.Generated;
  * HotelSearchCriteriaDTO
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-02-11T18:56:35.991525100+03:00[Europe/Moscow]", comments = "Generator version: 7.11.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-02-16T17:19:33.206639900+03:00[Europe/Moscow]", comments = "Generator version: 7.11.0")
 public class HotelSearchCriteriaDTO {
 
   private @Nullable String name;

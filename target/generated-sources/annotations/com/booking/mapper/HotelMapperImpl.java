@@ -1,10 +1,12 @@
 package com.booking.mapper;
 
-import com.booking.entity.Address;
 import com.booking.entity.Hotel;
+import com.booking.entity.util.HotelCountDTO;
 import com.booking.entity.util.HotelSearchCriteria;
+import com.booking.mapper.util.AddressMapper;
 import com.booking.openapi.model.ArrivalTime;
 import com.booking.openapi.model.Contact;
+import com.booking.openapi.model.HistogramDTO;
 import com.booking.openapi.model.HotelBrief;
 import com.booking.openapi.model.HotelDetail;
 import com.booking.openapi.model.HotelSearchCriteriaDTO;
@@ -14,15 +16,24 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-02-11T18:56:43+0300",
+    date = "2025-02-16T17:19:54+0300",
     comments = "version: 1.6.3, compiler: javac, environment: Java 17.0.5 (Oracle Corporation)"
 )
 @Component
 public class HotelMapperImpl implements HotelMapper {
+
+    private final AddressMapper addressMapper;
+
+    @Autowired
+    public HotelMapperImpl(AddressMapper addressMapper) {
+
+        this.addressMapper = addressMapper;
+    }
 
     @Override
     public HotelDetail toHotelDetailsDto(Hotel hotel) {
@@ -32,11 +43,11 @@ public class HotelMapperImpl implements HotelMapper {
 
         HotelDetail hotelDetail = new HotelDetail();
 
+        hotelDetail.setContacts( contactToContact( hotel.getContact() ) );
+        hotelDetail.setAddress( addressMapper.toDto( hotel.getAddressEntity() ) );
         hotelDetail.setId( hotel.getId() );
         hotelDetail.setName( hotel.getName() );
         hotelDetail.setBrand( hotel.getBrand() );
-        hotelDetail.setAddress( addressToAddress( hotel.getAddress() ) );
-        hotelDetail.setContacts( contactToContact( hotel.getContact() ) );
         hotelDetail.setArrivalTime( arrivalTimeToArrivalTime( hotel.getArrivalTime() ) );
 
         hotelDetail.setAmenities( convertAmenitiesToNames(hotel.getAmenities()) );
@@ -52,11 +63,11 @@ public class HotelMapperImpl implements HotelMapper {
 
         Hotel hotel = new Hotel();
 
+        hotel.setContact( contactToContact1( newHotel.getContacts() ) );
+        hotel.setAddressEntity( addressMapper.toEntity( newHotel.getAddress() ) );
         hotel.setName( newHotel.getName() );
         hotel.setDescription( newHotel.getDescription() );
         hotel.setBrand( newHotel.getBrand() );
-        hotel.setAddress( addressToAddress1( newHotel.getAddress() ) );
-        hotel.setContact( contactToContact1( newHotel.getContacts() ) );
         hotel.setArrivalTime( arrivalTimeToArrivalTime1( newHotel.getArrivalTime() ) );
 
         return hotel;
@@ -90,9 +101,23 @@ public class HotelMapperImpl implements HotelMapper {
         hotelBrief.setDescription( hotel.getDescription() );
         hotelBrief.setBrand( hotel.getBrand() );
 
-        hotelBrief.setAddress( mapAddress(hotel.getAddress()) );
+        hotelBrief.setAddress( mapAddress(hotel.getAddressEntity()) );
 
         return hotelBrief;
+    }
+
+    @Override
+    public HistogramDTO mapToModelDTO(HotelCountDTO hotelCountDTO) {
+        if ( hotelCountDTO == null ) {
+            return null;
+        }
+
+        HistogramDTO histogramDTO = new HistogramDTO();
+
+        histogramDTO.setName( hotelCountDTO.getName() );
+        histogramDTO.setCount( hotelCountDTO.getCount() );
+
+        return histogramDTO;
     }
 
     @Override
@@ -113,22 +138,6 @@ public class HotelMapperImpl implements HotelMapper {
         }
 
         return hotelSearchCriteria.build();
-    }
-
-    protected com.booking.openapi.model.Address addressToAddress(Address address) {
-        if ( address == null ) {
-            return null;
-        }
-
-        com.booking.openapi.model.Address address1 = new com.booking.openapi.model.Address();
-
-        address1.setHouseNumber( address.getHouseNumber() );
-        address1.setStreet( address.getStreet() );
-        address1.setCity( address.getCity() );
-        address1.setCountry( address.getCountry() );
-        address1.setPostCode( address.getPostCode() );
-
-        return address1;
     }
 
     protected Contact contactToContact(com.booking.entity.Contact contact) {
@@ -159,24 +168,6 @@ public class HotelMapperImpl implements HotelMapper {
         }
 
         return arrivalTime1;
-    }
-
-    protected Address addressToAddress1(com.booking.openapi.model.Address address) {
-        if ( address == null ) {
-            return null;
-        }
-
-        Address address1 = new Address();
-
-        if ( address.getHouseNumber() != null ) {
-            address1.setHouseNumber( address.getHouseNumber() );
-        }
-        address1.setStreet( address.getStreet() );
-        address1.setCity( address.getCity() );
-        address1.setCountry( address.getCountry() );
-        address1.setPostCode( address.getPostCode() );
-
-        return address1;
     }
 
     protected com.booking.entity.Contact contactToContact1(Contact contact) {

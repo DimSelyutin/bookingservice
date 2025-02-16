@@ -12,6 +12,18 @@ databaseChangeLog:
             startValue: 1
             incrementBy: 1
         - createSequence:
+            sequenceName: street_sequence
+            startValue: 1
+            incrementBy: 1
+        - createSequence:
+            sequenceName: city_sequence
+            startValue: 1
+            incrementBy: 1
+        - createSequence:
+            sequenceName: country_sequence
+            startValue: 1
+            incrementBy: 1
+        - createSequence:
             sequenceName: contact_sequence
             startValue: 1
             incrementBy: 1

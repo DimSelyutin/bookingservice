@@ -4,6 +4,27 @@ databaseChangeLog:
       author: DimSelyutin
       changes:
         - addForeignKeyConstraint:
+            baseTableName: cities
+            baseColumnNames: country_id
+            referencedTableName: countries
+            referencedColumnNames: id
+            constraintName: fk_city_country
+
+        - addForeignKeyConstraint:
+            baseTableName: streets
+            baseColumnNames: city_id
+            referencedTableName: cities
+            referencedColumnNames: id
+            constraintName: fk_street_city
+
+        - addForeignKeyConstraint:
+            baseTableName: addresses
+            baseColumnNames: street_id
+            referencedTableName: streets
+            referencedColumnNames: id
+            constraintName: fk_address_street
+
+        - addForeignKeyConstraint:
             baseTableName: hotels
             baseColumnNames: address_id
             referencedTableName: addresses

@@ -4,10 +4,12 @@ info:
   description: API for managing hotels, including searching, retrieving, and creating hotel records.
   version: 1.0.0
 servers:
-  - url: http://localhost/v1
+  - url: http://localhost/v1/property-view
 paths:
-  /property-view/hotels:
+  /hotels:
     get:
+      tags:
+        - HotelController
       summary: Get a list of all hotels
       operationId: getHotels
       parameters:
@@ -47,6 +49,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorDto'
     post:
+      tags:
+        - HotelController
       summary: Create a new hotel
       operationId: createHotel
       requestBody:
@@ -81,8 +85,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorDto'
 
-  /property-view/hotels/{id}:
+  /hotels/{id}:
     get:
+      tags:
+        - HotelController
       summary: Get detailed information about a specific hotel
       operationId: getHotelById
       parameters:
@@ -112,31 +118,18 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorDto'
 
-  /property-view/search:
+  /search:
     get:
+      tags:
+        - SearchController
       summary: Search hotels by various parameters
       operationId: searchHotels
-      parameters:
-        - name: name
-          in: query
-          schema:
-            type: string
-        - name: brand
-          in: query
-          schema:
-            type: string
-        - name: city
-          in: query
-          schema:
-            type: string
-        - name: country
-          in: query
-          schema:
-            type: string
-        - name: amenities
-          in: query
-          schema:
-            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HotelSearchCriteriaDTO'
       responses:
         '200':
           description: A list of hotels matching the search criteria
@@ -159,8 +152,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorDto'
 
-  /property-view/hotels/{id}/amenities:
+  /hotels/{id}/amenities:
     post:
+      tags:
+        - AmenitiesController
       summary: Add amenities to a hotel
       operationId: addHotelAmenities
       parameters:
@@ -200,8 +195,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorDto'
 
-  /property-view/histogram/{param}:
+  /histogram/{param}:
     get:
+      tags:
+        - SearchController
       summary: Get count of hotels grouped by specified parameter
       operationId: getHotelHistogram
       parameters:
@@ -220,6 +217,7 @@ paths:
                 type: object
                 additionalProperties:
                   type: integer
+                  format: int64
         '400':
           description: Bad Request
           content:
@@ -249,6 +247,7 @@ components:
       $ref: "new-hotel-dto.yaml#/components/schemas/NewHotel"
     HotelSearchCriteriaDTO:
       $ref: "./hotel-search-criteria-dto.yaml#/components/schemas/HotelSearchCriteriaDTO"
+    HistogramDTO:
+      $ref: "./histogram-dto.yaml#/components/schemas/HistogramDTO"
     ErrorDto:
       $ref: "error-dtos.yaml#/components/schemas/ErrorDto"
-

@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004-create-streets-table
+      author: DimSelyutin
+      changes:
+        - createTable:
+            tableName: streets
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    autoIncrement: true
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: city_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+      rollback:
+        - dropTable:
+            tableName: streets

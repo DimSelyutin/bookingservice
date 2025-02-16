@@ -1,6 +1,7 @@
 package com.booking.repository;
 
 import com.booking.entity.Hotel;
+import com.booking.entity.util.HotelCountDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -19,8 +20,8 @@ public interface HistogramRepository extends JpaRepository<Hotel, Integer> {
      * @return a list of objects where each object array contains the city name
      * and the corresponding hotel count.
      */
-    @Query("SELECT h.address.city AS city, COUNT(h) AS count FROM Hotel h GROUP BY h.address.city")
-    List<Object[]> countHotelsByCity();
+    @Query("SELECT new com.booking.entity.util.HotelCountDTO(h.addressEntity.street.city.name, COUNT(h)) FROM Hotel h GROUP BY h.addressEntity.street.city.name")
+    List<HotelCountDTO> countHotelsByCity();
 
     /**
      * Counts the number of hotels grouped by brand.
@@ -29,7 +30,7 @@ public interface HistogramRepository extends JpaRepository<Hotel, Integer> {
      * and the corresponding hotel count.
      */
     @Query("SELECT h.brand AS name, COUNT(h) AS count FROM Hotel h GROUP BY h.brand")
-    List<Object[]> countHotelsByBrand();
+    List<HotelCountDTO> countHotelsByBrand();
 
     /**
      * Counts the number of hotels grouped by country.
@@ -37,8 +38,8 @@ public interface HistogramRepository extends JpaRepository<Hotel, Integer> {
      * @return a list of objects where each object array contains the country name
      * and the corresponding hotel count.
      */
-    @Query("SELECT h.address.country AS name, COUNT(h) AS count FROM Hotel h GROUP BY h.address.country")
-    List<Object[]> countHotelsByCountry();
+    @Query("SELECT h.addressEntity.street.city.country AS name, COUNT(h) AS count FROM Hotel h GROUP BY h.addressEntity.street.city.country")
+    List<HotelCountDTO> countHotelsByCountry();
 
     /**
      * Counts the number of hotels grouped by amenities.
@@ -46,8 +47,8 @@ public interface HistogramRepository extends JpaRepository<Hotel, Integer> {
      * @return a list of objects where each object array contains the amenity name
      * and the corresponding hotel count.
      */
-    @Query("SELECT a.name AS name, COUNT(h) AS count " +
+    @Query("SELECT new com.booking.entity.util.HotelCountDTO(a.name, COUNT(h)) " +
             "FROM Hotel h JOIN h.amenities a " +
             "GROUP BY a.name")
-    List<Object[]> countHotelsByAmenities();
+    List<HotelCountDTO> countHotelsByAmenities();
 }

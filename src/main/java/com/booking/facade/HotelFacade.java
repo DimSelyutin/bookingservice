@@ -1,6 +1,5 @@
 package com.booking.facade;
 
-import com.booking.entity.util.HotelDetailsDto;
 import com.booking.openapi.model.HotelBrief;
 import com.booking.openapi.model.HotelDetail;
 import com.booking.openapi.model.HotelSearchCriteriaDTO;
