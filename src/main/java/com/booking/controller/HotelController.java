@@ -3,7 +3,7 @@ package com.booking.controller;
 import com.booking.facade.AmenityFacade;
 import com.booking.facade.HistogramFacade;
 import com.booking.facade.HotelFacade;
-import com.booking.openapi.api.PropertyViewApi;
+import com.booking.openapi.api.HotelsApi;
 import com.booking.openapi.model.HotelBrief;
 import com.booking.openapi.model.HotelDetail;
 import com.booking.openapi.model.HotelSearchCriteriaDTO;
@@ -28,11 +28,11 @@ import java.util.Map;
 @RequestMapping("/property-view")
 @RequiredArgsConstructor
 @Validated
-public class HotelController implements PropertyViewApi {
+public class HotelController implements HotelsApi {
 
     private final HotelFacade hotelFacade;
     private final AmenityFacade amenityFacade;
-    private final HistogramFacade histogramFacade;
+
 
     /**
      * Getting extended information on a specific hotel.
@@ -80,6 +80,7 @@ public class HotelController implements PropertyViewApi {
      * @return DTO of the new hotel
      * @* @param newHotel DTO with new hotel data
      */
+    @Override
     @Operation(summary = "Creation of a new hotel")
     @PostMapping("/hotels")
     public ResponseEntity<HotelBrief> createHotel(@RequestBody NewHotel newHotel) {
@@ -90,56 +91,23 @@ public class HotelController implements PropertyViewApi {
         return ResponseEntity.status(HttpStatus.CREATED).body(hotelBrief);
     }
 
-    /**
-     * Search for a hotel by filters.
-     *
-     * @param criteriaDTO DTO with filters
-     * @* @return DTO of the found hotel
-     */
-    @Operation(summary = "The method of searching for hotels by criteria")
-    @GetMapping("/hotels/search")
-    public ResponseEntity<List<HotelBrief>> searchHotels(@ModelAttribute HotelSearchCriteriaDTO criteriaDTO) {
-        log.debug("GET-request, searchHotels - start, criteria = {}", criteriaDTO);
-
-        List<HotelBrief> hotelBriefs = hotelFacade.searchHotels(criteriaDTO);
-        ResponseEntity<List<HotelBrief>> response = ResponseEntity.ok(hotelBriefs);
-        log.debug("GET-request, searchHotels - end, size = {}", hotelBriefs.size());
-
-        return response;
-    }
 
     /**
      * @param id
      * @param amenities
      * @return
      */
+    @Override
     @Operation(summary = "Adding amenities to the hotel")
     @PostMapping("/hotels/{id}/amenities")
-    public ResponseEntity<Void> addAmenitiesToHotel(@PathVariable Integer id, @RequestBody List<String> amenities) {
-        log.debug("POST-request, addAmenitiesToHotel - start, hotelId = {}, amenities = {}", id, amenities);
+    public ResponseEntity<Void> addHotelAmenities(@PathVariable Integer id, @RequestBody List<String> amenities) {
+        log.info("POST-request, addAmenitiesToHotel - start, hotelId = {}, amenities = {}", id, amenities);
 
         amenityFacade.addAmenitiesToHotel(id, amenities);
 
-        log.debug("POST-request, addAmenitiesToHotel - end, hotelId = {}", id);
+        log.info("POST-request, addAmenitiesToHotel - end, hotelId = {}", id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    /**
-     * Getting a histogram of hotels by a given parameter.
-     *
-     * @param parameter for the histogram (for example, "city", "brand", "country", "amenities")
-     * @return histogram of hotels
-     */
-    @Override
-    @Operation(summary = "Getting a histogram of hotels by a given parameter")
-    @GetMapping("/histogram/{parameter}")
-    public ResponseEntity<Map<String, Integer>> getHotelHistogram(@PathVariable String parameter) {
-        log.debug("GET-request, getHotelHistogram - start, param = {}", parameter);
 
-        Map<String, Integer> histogram = histogramFacade.getHotelHistogram(parameter);
-        ResponseEntity<Map<String, Integer>> response = ResponseEntity.ok(histogram);
-        log.debug("GET-request, getHotelHistogram - end, histogram size = {}", histogram.size());
-
-        return response;
-    }
 }

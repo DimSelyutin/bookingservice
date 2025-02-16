@@ -1,6 +1,8 @@
 package com.booking.service;
 
-import java.util.Map;
+import com.booking.entity.util.HotelCountDTO;
+
+import java.util.List;
 
 /**
  * Service interface for generating histograms based on input parameters.
@@ -17,5 +19,5 @@ public interface HistogramService {
      * @return a Map where the keys are categories represented by the parameter,
      * and the values are the corresponding counts for each category.
      */
-    Map<String, Integer> generateHistogram(String param);
+    List<HotelCountDTO> generateHistogram(String param);
 }

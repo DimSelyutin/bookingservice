@@ -1,17 +1,20 @@
 package com.booking.service.impl;
 
+import com.booking.entity.util.HotelCountDTO;
 import com.booking.enums.HistogramParam;
 import com.booking.repository.HistogramRepository;
 import com.booking.service.HistogramService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Map;
+import java.util.List;
 
 /**
  * Service for managing histograms.
  */
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class HistogramServiceImpl implements HistogramService {
@@ -23,11 +26,20 @@ public class HistogramServiceImpl implements HistogramService {
      */
     @Transactional(readOnly = true)
     @Override
-    public Map<String, Integer> generateHistogram(String param) {
+    public List<HotelCountDTO> generateHistogram(String param) {
+        log.info("Starting histogram generation for parameter: {}", param);
 
-        HistogramParam histogramParam = HistogramParam.fromString(param);
-        Map<String, Integer> list = histogramParam.getMethod(histogramRepository);
+        HistogramParam histogramParam;
+        try {
+            histogramParam = HistogramParam.fromString(param);
+            log.debug("Parsed HistogramParam: {}", histogramParam);
+        } catch (IllegalArgumentException e) {
+            log.error("Invalid parameter provided: {}", param, e);
+            throw e; // Можно выбросить исключение или вернуть значение по умолчанию
+        }
 
-        return list;
+        return histogramParam.getMethod(histogramRepository);
+
+
     }
 }

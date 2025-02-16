@@ -3,6 +3,7 @@ package com.booking.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "hotels")
+@ToString
 public class Hotel {
 
     /**
@@ -51,7 +53,7 @@ public class Hotel {
      */
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "address_id", nullable = false)
-    private Address address;
+    private AddressEntity addressEntity;
 
     /**
      * The contact information for the hotel.
@@ -60,6 +62,7 @@ public class Hotel {
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "contact_id", nullable = false)
     private Contact contact;
+
 
     /**
      * The arrival time details for the hotel.

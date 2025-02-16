@@ -3,8 +3,6 @@ package com.booking.service.impl;
 import com.booking.entity.Hotel;
 import com.booking.exception.HotelNotFoundException;
 import com.booking.repository.HotelRepository;
-import com.booking.service.HotelService;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -18,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class HotelServiceImplTest {
+ class HotelServiceImplTest {
 
     @Mock
     private HotelRepository hotelRepository;
@@ -27,7 +25,7 @@ public class HotelServiceImplTest {
     private HotelServiceImpl hotelService;
 
     @Test
-    public void whenHotelExists_thenReturnHotel() {
+     void whenHotelExists_thenReturnHotel() {
         // Given
         Hotel hotel = new Hotel();
         hotel.setId(1);
@@ -45,7 +43,7 @@ public class HotelServiceImplTest {
     }
 
     @Test
-    public void whenHotelDoesNotExist_thenThrowHotelNotFoundException() {
+     void whenHotelDoesNotExist_thenThrowHotelNotFoundException() {
         // Given
         Integer hotelId = 1;
 

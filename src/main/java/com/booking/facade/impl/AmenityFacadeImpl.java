@@ -15,7 +15,7 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class AmenityFacadeImpl implements AmenityFacade{
+public class AmenityFacadeImpl implements AmenityFacade {
 
     private final AmenityService amenityService;
     private final HotelMapper hotelMapper;
@@ -23,13 +23,13 @@ public class AmenityFacadeImpl implements AmenityFacade{
     /**
      * Create amenities for hotel.
      *
-     * @param hotelId
-     * @param amenities
+     * @param hotelId id of hotel.
+     * @param amenities list amenities.
      */
     @Override
     public void addAmenitiesToHotel(Integer hotelId, List<String> amenities) {
-        log.debug("Adding amenities to hotel - start, hotelId = {}, amenities = {}", hotelId, amenities);
+        log.info("Adding amenities to hotel - start, hotelId = {}, amenities = {}", hotelId, amenities);
         amenityService.addAmenitiesToHotel(hotelId, amenities);
-        log.debug("Adding amenities to hotel - end, hotelId = {}", hotelId);
+        log.info("Adding amenities to hotel - end, hotelId = {}", hotelId);
     }
 }

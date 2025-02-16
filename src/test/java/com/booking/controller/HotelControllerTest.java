@@ -31,7 +31,7 @@ import java.util.List;
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class HotelControllerTest {
+class HotelControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -47,7 +47,7 @@ public class HotelControllerTest {
     private static final String API_URL = "/property-view";
 
     @BeforeEach
-    public void setUp() throws Exception {
+    void setUp() throws Exception {
         newHotel = objectMapper.readValue(
                 Files.readString(Paths.get(getClass().getClassLoader().getResource("./json/newHotel.json").toURI())),
                 NewHotel.class
@@ -56,10 +56,10 @@ public class HotelControllerTest {
 
 
     @Test
-    public void createHotel_ShouldReturnCreated() throws Exception {
+    void createHotel_ShouldReturnCreated() throws Exception {
         when(hotelFacade.createHotel(newHotel)).thenReturn(TestData.createTestHotelBrief());
 
-        mockMvc.perform(post(API_URL+"/hotels")
+        mockMvc.perform(post(API_URL + "/hotels")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(newHotel)))
                 .andExpect(status().isCreated())
@@ -68,7 +68,7 @@ public class HotelControllerTest {
     }
 
     @Test
-    public void getHotelById_ShouldReturnHotelDetail() throws Exception {
+    void getHotelById_ShouldReturnHotelDetail() throws Exception {
         Integer hotelId = 1;
         when(hotelFacade.getHotel(hotelId)).thenReturn(TestData.createTestHotelDetails());
 
@@ -80,10 +80,10 @@ public class HotelControllerTest {
     }
 
     @Test
-    public void getHotels_ShouldReturnListOfHotelBrief() throws Exception {
+    void getHotels_ShouldReturnListOfHotelBrief() throws Exception {
         when(hotelFacade.getHotels(0, 10)).thenReturn(List.of(TestData.createTestHotelBrief(), TestData.createTestHotelBrief()));
 
-        mockMvc.perform(get(API_URL+"/hotels")
+        mockMvc.perform(get(API_URL + "/hotels")
                         .param("page", "0")
                         .param("size", "10"))
                 .andExpect(status().isOk())
@@ -92,7 +92,7 @@ public class HotelControllerTest {
     }
 
     @Test
-    public void getHotelById_NotFound_ShouldReturn404() throws Exception {
+    void getHotelById_NotFound_ShouldReturn404() throws Exception {
         Integer hotelId = 999;
         when(hotelFacade.getHotel(hotelId)).thenThrow(new HotelNotFoundException("Hotel with id 999 not found!"));
 
@@ -102,14 +102,14 @@ public class HotelControllerTest {
     }
 
     @Test
-    public void getHotelById_InternalServerError_ShouldReturn500() throws Exception {
+    void getHotelById_InternalServerError_ShouldReturn500() throws Exception {
         mockMvc.perform(get(API_URL + "/hotels/{id}", "string"))
                 .andExpect(status().isInternalServerError())
                 .andExpect(jsonPath("$.errorCode").value(500));
     }
 
     @Test
-    public void testSearchHotels() throws Exception {
+    void testSearchHotels() throws Exception {
 
         when(hotelFacade.searchHotels(any(HotelSearchCriteriaDTO.class)))
                 .thenReturn(List.of(TestData.createTestHotelBrief()));
@@ -133,7 +133,12 @@ public class HotelControllerTest {
     }
 
     @Test
-    public void testGetHotelHistogramCity() throws Exception {
+    void testGetHotelHistogramCity() throws Exception {
+        newHotel.getAddress().setCity("Warsaw");
+        mockMvc.perform(post(API_URL + "/hotels")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(newHotel)));
+
         // Выполнение GET-запроса
         mockMvc.perform(get(API_URL + "/histogram/city") // Замените на ваш URL
                         .contentType(MediaType.APPLICATION_JSON))
@@ -142,7 +147,7 @@ public class HotelControllerTest {
     }
 
     @Test
-    public void testGetHotelHistogramAmenities() throws Exception {
+    void testGetHotelHistogramAmenities() throws Exception {
         // Выполнение GET-запроса
         mockMvc.perform(get(API_URL + "/histogram/amenities")
                         .contentType(MediaType.APPLICATION_JSON))

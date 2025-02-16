@@ -69,11 +69,12 @@ public class HotelFacadeImpl implements HotelFacade {
      */
     @Override
     public HotelBrief createHotel(NewHotel newHotel) {
-        log.debug("GET-request, createHotel - start, newHotel = {}", newHotel);
+        log.info("GET-request, createHotel - start, newHotel = {}", newHotel);
+
         Hotel hotel = hotelMapper.toHotel(newHotel);
         Hotel savedHotel = hotelService.createHotel(hotel);
         HotelBrief hotelBrief = hotelMapper.toHotelBriefDto(savedHotel);
-        log.debug("GET-request, createHotel - start, savedHotel = {}", hotelBrief);
+        log.info("GET-request, createHotel - start, savedHotel = {}", hotelBrief);
         return hotelBrief;
     }
 
@@ -90,7 +91,7 @@ public class HotelFacadeImpl implements HotelFacade {
 
         List<HotelBrief> response = hotels.stream()
                 .map(hotelMapper::toHotelBriefDto)
-                .collect(Collectors.toList());
+                .toList();
 
         log.debug("POST-request, searchHotels - end, size = {}", response.size());
         return response;

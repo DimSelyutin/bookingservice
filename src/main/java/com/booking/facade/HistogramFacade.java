@@ -10,6 +10,6 @@ public interface HistogramFacade {
      * @param parameter for the histogram (for example, "city", "brand", "county", "amenities")
      * @return histogram of hotels
      */
-    Map<String, Integer> getHotelHistogram(String parameter);
+    Map<String, Long> getHotelHistogram(String parameter);
 
 }

@@ -1,6 +1,10 @@
 package com.booking.mapper;
 
 import com.booking.entity.Hotel;
+import com.booking.mapper.util.AddressMapper;
+import com.booking.mapper.util.CityMapper;
+import com.booking.mapper.util.CountryMapper;
+import com.booking.mapper.util.StreetMapper;
 import com.booking.openapi.model.HotelBrief;
 import com.booking.openapi.model.HotelDetail;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,20 +18,23 @@ import static com.booking.util.TestData.createTestHotels;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class HotelMapperTest {
+class HotelMapperTest {
 
     private HotelMapper hotelMapper;
 
+    private AddressMapper addressMapper;
+
     @BeforeEach
     public void setUp() {
-        hotelMapper = Mappers.getMapper(HotelMapper.class);
+        addressMapper = Mappers.getMapper(AddressMapper.class);
+        hotelMapper = new HotelMapperImpl(addressMapper);
     }
 
     @Test
-    public void whenValidHotel_thenHotelDetailShouldBeMapped() {
+    void whenValidHotel_thenHotelDetailShouldBeMapped() {
 
         Hotel hotel = createSingleTestHotel();
-        hotel.setAddress(null);
+        hotel.setAddressEntity(null);
         HotelDetail dto = hotelMapper.toHotelDetailsDto(hotel);
 
         assertEquals(hotel.getId(), dto.getId());
@@ -37,22 +44,22 @@ public class HotelMapperTest {
     }
 
     @Test
-    public void whenNullHotel_thenHotelDetailShouldBeNull() {
+    void whenNullHotel_thenHotelDetailShouldBeNull() {
         HotelDetail dto = hotelMapper.toHotelDetailsDto(null);
         assertNull(dto);
     }
 
     @Test
-    public void whenListOfHotels_thenHotelBriefsShouldBeMapped() {
+    void whenListOfHotels_thenHotelBriefsShouldBeMapped() {
         // Given
         List<Hotel> hotels = createTestHotels();
-        String fullAddress = "9 Pobediteley Avenue, Minsk, 220004, Belarus";
+        String fullAddress = "9 Main St, New York, 10001, USA";
 
         // When
         List<HotelBrief> dtos = hotelMapper.toHotelBriefDtos(hotels);
 
         // Then
-        assertEquals(2, dtos.size());
+        assertEquals(3, dtos.size());
         assertEquals(hotels.get(0).getId(), dtos.get(0).getId());
         assertEquals(hotels.get(0).getName(), dtos.get(0).getName());
         assertEquals(fullAddress, dtos.get(0).getAddress());
@@ -61,7 +68,7 @@ public class HotelMapperTest {
     }
 
     @Test
-    public void whenValidHotel_thenHotelBriefShouldBeMapped() {
+    void whenValidHotel_thenHotelBriefShouldBeMapped() {
         // Упрощаем создание отеля с помощью TestData
         Hotel hotel = createSingleTestHotel();
 
@@ -72,7 +79,7 @@ public class HotelMapperTest {
     }
 
     @Test
-    public void whenNullHotel_thenHotelBriefShouldBeNull() {
+    void whenNullHotel_thenHotelBriefShouldBeNull() {
         HotelBrief dto = hotelMapper.toHotelBriefDto(null);
         assertNull(dto);
     }

@@ -8,7 +8,6 @@ package com.booking.openapi.api;
 import com.booking.openapi.model.ErrorDto;
 import com.booking.openapi.model.HotelBrief;
 import com.booking.openapi.model.HotelDetail;
-import java.util.Map;
 import com.booking.openapi.model.NewHotel;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
@@ -36,17 +35,17 @@ import java.util.Map;
 import java.util.Optional;
 import jakarta.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-02-12T03:08:38.377363300+03:00[Europe/Moscow]", comments = "Generator version: 7.11.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-02-16T18:06:59.118646100+03:00[Europe/Moscow]", comments = "Generator version: 7.11.0")
 @Validated
-@Tag(name = "property-view", description = "the property-view API")
-public interface PropertyViewApi {
+@Tag(name = "AmenitiesController", description = "the AmenitiesController API")
+public interface HotelsApi {
 
     default Optional<NativeWebRequest> getRequest() {
         return Optional.empty();
     }
 
     /**
-     * POST /property-view/hotels/{id}/amenities : Add amenities to a hotel
+     * POST /hotels/{id}/amenities : Add amenities to a hotel
      *
      * @param id ID of the hotel (required)
      * @param requestBody  (required)
@@ -58,6 +57,7 @@ public interface PropertyViewApi {
     @Operation(
         operationId = "addHotelAmenities",
         summary = "Add amenities to a hotel",
+        tags = { "AmenitiesController" },
         responses = {
             @ApiResponse(responseCode = "204", description = "Amenities added successfully"),
             @ApiResponse(responseCode = "400", description = "Bad Request", content = {
@@ -73,7 +73,7 @@ public interface PropertyViewApi {
     )
     @RequestMapping(
         method = RequestMethod.POST,
-        value = "/property-view/hotels/{id}/amenities",
+        value = "/hotels/{id}/amenities",
         produces = { "application/json" },
         consumes = { "application/json" }
     )
@@ -107,7 +107,7 @@ public interface PropertyViewApi {
 
 
     /**
-     * POST /property-view/hotels : Create a new hotel
+     * POST /hotels : Create a new hotel
      *
      * @param newHotel  (required)
      * @return Hotel created successfully (status code 201)
@@ -118,6 +118,7 @@ public interface PropertyViewApi {
     @Operation(
         operationId = "createHotel",
         summary = "Create a new hotel",
+        tags = { "HotelController" },
         responses = {
             @ApiResponse(responseCode = "201", description = "Hotel created successfully", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = HotelBrief.class))
@@ -135,7 +136,7 @@ public interface PropertyViewApi {
     )
     @RequestMapping(
         method = RequestMethod.POST,
-        value = "/property-view/hotels",
+        value = "/hotels",
         produces = { "application/json" },
         consumes = { "application/json" }
     )
@@ -173,7 +174,7 @@ public interface PropertyViewApi {
 
 
     /**
-     * GET /property-view/hotels/{id} : Get detailed information about a specific hotel
+     * GET /hotels/{id} : Get detailed information about a specific hotel
      *
      * @param id ID of the hotel (required)
      * @return Detailed information about a hotel (status code 200)
@@ -183,6 +184,7 @@ public interface PropertyViewApi {
     @Operation(
         operationId = "getHotelById",
         summary = "Get detailed information about a specific hotel",
+        tags = { "HotelController" },
         responses = {
             @ApiResponse(responseCode = "200", description = "Detailed information about a hotel", content = {
                 @Content(mediaType = "application/json", schema = @Schema(implementation = HotelDetail.class))
@@ -197,7 +199,7 @@ public interface PropertyViewApi {
     )
     @RequestMapping(
         method = RequestMethod.GET,
-        value = "/property-view/hotels/{id}",
+        value = "/hotels/{id}",
         produces = { "application/json" }
     )
     
@@ -229,67 +231,7 @@ public interface PropertyViewApi {
 
 
     /**
-     * GET /property-view/histogram/{param} : Get count of hotels grouped by specified parameter
-     *
-     * @param param Parameter to group by (brand, city, country, amenities) (required)
-     * @return Count of hotels grouped by parameter (status code 200)
-     *         or Bad Request (status code 400)
-     *         or Not Found (status code 404)
-     *         or Internal Server Error (status code 500)
-     */
-    @Operation(
-        operationId = "getHotelHistogram",
-        summary = "Get count of hotels grouped by specified parameter",
-        responses = {
-            @ApiResponse(responseCode = "200", description = "Count of hotels grouped by parameter", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = Map.class))
-            }),
-            @ApiResponse(responseCode = "400", description = "Bad Request", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))
-            }),
-            @ApiResponse(responseCode = "404", description = "Not Found", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))
-            }),
-            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))
-            })
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.GET,
-        value = "/property-view/histogram/{param}",
-        produces = { "application/json" }
-    )
-    
-    default ResponseEntity<Map<String, Integer>> getHotelHistogram(
-        @Parameter(name = "param", description = "Parameter to group by (brand, city, country, amenities)", required = true, in = ParameterIn.PATH) @PathVariable("param") String param
-    ) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"errorMessage\" : \"Resource not found.\", \"errorCode\" : 404, \"timestamp\" : \"2023-10-05T14:48:00Z\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"errorMessage\" : \"Resource not found.\", \"errorCode\" : 404, \"timestamp\" : \"2023-10-05T14:48:00Z\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"errorMessage\" : \"Resource not found.\", \"errorCode\" : 404, \"timestamp\" : \"2023-10-05T14:48:00Z\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
-
-
-    /**
-     * GET /property-view/hotels : Get a list of all hotels
+     * GET /hotels : Get a list of all hotels
      *
      * @param page The page number to retrieve (default is 0) (optional, default to 0)
      * @param size The number of items to retrieve per page (default is 10) (optional, default to 10)
@@ -300,6 +242,7 @@ public interface PropertyViewApi {
     @Operation(
         operationId = "getHotels",
         summary = "Get a list of all hotels",
+        tags = { "HotelController" },
         responses = {
             @ApiResponse(responseCode = "200", description = "A list of hotels with brief information", content = {
                 @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = HotelBrief.class)))
@@ -314,77 +257,13 @@ public interface PropertyViewApi {
     )
     @RequestMapping(
         method = RequestMethod.GET,
-        value = "/property-view/hotels",
+        value = "/hotels",
         produces = { "application/json" }
     )
     
     default ResponseEntity<List<HotelBrief>> getHotels(
         @Parameter(name = "page", description = "The page number to retrieve (default is 0)", in = ParameterIn.QUERY) @Valid @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
         @Parameter(name = "size", description = "The number of items to retrieve per page (default is 10)", in = ParameterIn.QUERY) @Valid @RequestParam(value = "size", required = false, defaultValue = "10") Integer size
-    ) {
-        getRequest().ifPresent(request -> {
-            for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "[ { \"address\" : \"address\", \"phone\" : \"phone\", \"name\" : \"name\", \"description\" : \"description\", \"id\" : \"id\", \"brand\" : \"brand\" }, { \"address\" : \"address\", \"phone\" : \"phone\", \"name\" : \"name\", \"description\" : \"description\", \"id\" : \"id\", \"brand\" : \"brand\" } ]";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"errorMessage\" : \"Resource not found.\", \"errorCode\" : 404, \"timestamp\" : \"2023-10-05T14:48:00Z\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-                if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"errorMessage\" : \"Resource not found.\", \"errorCode\" : 404, \"timestamp\" : \"2023-10-05T14:48:00Z\" }";
-                    ApiUtil.setExampleResponse(request, "application/json", exampleString);
-                    break;
-                }
-            }
-        });
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
-
-    }
-
-
-    /**
-     * GET /property-view/search : Search hotels by various parameters
-     *
-     * @param name  (optional)
-     * @param brand  (optional)
-     * @param city  (optional)
-     * @param country  (optional)
-     * @param amenities  (optional)
-     * @return A list of hotels matching the search criteria (status code 200)
-     *         or Bad Request (status code 400)
-     *         or Internal Server Error (status code 500)
-     */
-    @Operation(
-        operationId = "searchHotels",
-        summary = "Search hotels by various parameters",
-        responses = {
-            @ApiResponse(responseCode = "200", description = "A list of hotels matching the search criteria", content = {
-                @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = HotelBrief.class)))
-            }),
-            @ApiResponse(responseCode = "400", description = "Bad Request", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))
-            }),
-            @ApiResponse(responseCode = "500", description = "Internal Server Error", content = {
-                @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorDto.class))
-            })
-        }
-    )
-    @RequestMapping(
-        method = RequestMethod.GET,
-        value = "/property-view/search",
-        produces = { "application/json" }
-    )
-    
-    default ResponseEntity<List<HotelBrief>> searchHotels(
-        @Parameter(name = "name", description = "", in = ParameterIn.QUERY) @Valid @RequestParam(value = "name", required = false) String name,
-        @Parameter(name = "brand", description = "", in = ParameterIn.QUERY) @Valid @RequestParam(value = "brand", required = false) String brand,
-        @Parameter(name = "city", description = "", in = ParameterIn.QUERY) @Valid @RequestParam(value = "city", required = false) String city,
-        @Parameter(name = "country", description = "", in = ParameterIn.QUERY) @Valid @RequestParam(value = "country", required = false) String country,
-        @Parameter(name = "amenities", description = "", in = ParameterIn.QUERY) @Valid @RequestParam(value = "amenities", required = false) String amenities
     ) {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {

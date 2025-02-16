@@ -1,6 +1,5 @@
 package com.booking.service.impl;
 
-
 import com.booking.entity.Amenity;
 import com.booking.entity.Hotel;
 import com.booking.repository.AmenityRepository;
@@ -31,15 +30,28 @@ public class AmenityServiceImpl implements AmenityService {
     @Transactional
     @Override
     public void addAmenitiesToHotel(Integer hotelId, List<String> amenities) {
+        log.info("Attempting to add amenities to hotel with ID: {}", hotelId);
+
         Hotel hotel = hotelRepository.findById(hotelId)
-                .orElseThrow(() -> new EntityNotFoundException("Hotel not found with id: " + hotelId));
+                .orElseThrow(() -> {
+                    log.error("Hotel not found with id: {}", hotelId);
+                    return new EntityNotFoundException("Hotel not found with id: " + hotelId);
+                });
+
+        log.info("Found hotel: {}", hotel.getName());
 
         for (String amenityName : amenities) {
+            log.debug("Processing amenity: {}", amenityName);
             Amenity amenity = amenityRepository.findByName(amenityName)
-                    .orElseGet(() -> amenityRepository.save(Amenity.builder().name(amenityName).build()));
+                    .orElseGet(() -> {
+                        log.info("Amenity not found, creating new amenity: {}", amenityName);
+                        return amenityRepository.save(Amenity.builder().name(amenityName).build());
+                    });
             hotel.getAmenities().add(amenity);
+            log.info("Added amenity '{}' to hotel '{}'", amenity.getName(), hotel.getName());
         }
 
         hotelRepository.save(hotel);
+        log.info("Successfully added amenities to hotel: {}", hotel.getName());
     }
 }

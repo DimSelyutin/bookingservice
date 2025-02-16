@@ -1,6 +1,6 @@
 databaseChangeLog:
   - changeSet:
-      id: 002-create-addresses-table
+      id: 005-create-addresses-table
       author: DimSelyutin
       changes:
         - createTable:
@@ -13,25 +13,14 @@ databaseChangeLog:
                     primaryKey: true
                     nullable: false
                     autoIncrement: true
-                  defaultValue: "NEXT VALUE FOR address_sequence"
               - column:
                   name: house_number
                   type: integer
                   constraints:
                     nullable: false
               - column:
-                  name: street
-                  type: varchar(255)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: city
-                  type: varchar(100)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: country
-                  type: varchar(100)
+                  name: street_id
+                  type: bigint
                   constraints:
                     nullable: false
               - column:
