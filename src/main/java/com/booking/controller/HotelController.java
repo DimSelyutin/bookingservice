@@ -25,7 +25,7 @@ import java.util.Map;
  */
 @RestController
 @Slf4j
-@RequestMapping("/property-view")
+@RequestMapping("/property-view/hotels")
 @RequiredArgsConstructor
 @Validated
 public class HotelController implements HotelsApi {
@@ -42,7 +42,7 @@ public class HotelController implements HotelsApi {
      */
     @Override
     @Operation(summary = "The method of obtaining additional information about the hotel")
-    @GetMapping("hotels/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<HotelDetail> getHotelById(@PathVariable("id") Integer id) {
         log.debug("GET-request, getHotelById - start, hotel id = {}", id);
 
@@ -61,7 +61,7 @@ public class HotelController implements HotelsApi {
      */
     @Override
     @Operation(summary = "Метод получения списка гостиниц")
-    @GetMapping("/hotels")
+    @GetMapping("")
     public ResponseEntity<List<HotelBrief>> getHotels(
             @RequestParam(defaultValue = "0") Integer page,
             @RequestParam(defaultValue = "10") Integer size) {
@@ -82,7 +82,7 @@ public class HotelController implements HotelsApi {
      */
     @Override
     @Operation(summary = "Creation of a new hotel")
-    @PostMapping("/hotels")
+    @PostMapping("")
     public ResponseEntity<HotelBrief> createHotel(@RequestBody NewHotel newHotel) {
         log.debug("POST-request, createHotel - start, hotel = {}", newHotel);
 
@@ -99,7 +99,7 @@ public class HotelController implements HotelsApi {
      */
     @Override
     @Operation(summary = "Adding amenities to the hotel")
-    @PostMapping("/hotels/{id}/amenities")
+    @PostMapping("/{id}/amenities")
     public ResponseEntity<Void> addHotelAmenities(@PathVariable Integer id, @RequestBody List<String> amenities) {
         log.info("POST-request, addAmenitiesToHotel - start, hotelId = {}, amenities = {}", id, amenities);
 

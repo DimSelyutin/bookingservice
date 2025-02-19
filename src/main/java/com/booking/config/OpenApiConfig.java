@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 /**
- * Конфигурация OpenApi.
+ * * OpenAPI configuration.
  */
 @Configuration
 public class OpenApiConfig implements WebMvcConfigurer {
@@ -21,18 +21,18 @@ public class OpenApiConfig implements WebMvcConfigurer {
     }
 
     /**
-     * Бин OpenApi.
+     * The OpenAPI bin.
      *
-     * @return настроенного OpenApi
+     * @return of the configured OpenAPI
      */
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Сервис бронирования отелей.")
+                        .title("Hotel booking service.")
                         .version(buildProperties.getVersion())
                         .description(
-                                "Сервис поиска, бронирования отелей."));
+                                "Hotel search and booking service."));
     }
 
 }

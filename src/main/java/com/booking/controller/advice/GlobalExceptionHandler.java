@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 public class GlobalExceptionHandler {
 
     /**
-     * Обработка исключения HotelNotFoundException
+     * * Handling HotelNotFoundException
      */
     @ExceptionHandler(HotelNotFoundException.class)
     public ResponseEntity<ErrorDto> handleHotelNotFoundException(HotelNotFoundException ex) {
@@ -29,7 +29,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * Обработка исключения BadRequestException
+     * * Handling BadRequestException
      */
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<ErrorDto> handleBadRequestException(BadRequestException ex) {
@@ -40,7 +40,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * Обработка общего RuntimeException
+     * Handling a common RuntimeException
      */
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<ErrorDto> handleRuntimeException(RuntimeException ex) {
@@ -51,7 +51,7 @@ public class GlobalExceptionHandler {
     }
 
     /**
-     * Вспомогательный метод для создания объекта ErrorDto
+     * Auxiliary method for creating an ErrorDto object
      */
     private ErrorDto createErrorDto(HttpStatus status, String message) {
         ErrorDto errorDto = new ErrorDto();

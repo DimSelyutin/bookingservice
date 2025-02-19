@@ -21,7 +21,7 @@ import java.util.List;
  */
 @RestController
 @Slf4j
-@RequestMapping("/property-view")
+@RequestMapping("/property-view/hotels")
 @RequiredArgsConstructor
 @Validated
 public class SearchController implements SearchApi {
@@ -35,7 +35,7 @@ public class SearchController implements SearchApi {
      */
     @Override
     @Operation(summary = "The method of searching for hotels by criteria")
-    @GetMapping("/hotels/search")
+    @GetMapping("/search")
 
     public ResponseEntity<List<HotelBrief>> searchHotels(@ModelAttribute HotelSearchCriteriaDTO criteriaDTO) {
         log.debug("GET-request, searchHotels - start, criteria = {}", criteriaDTO);
