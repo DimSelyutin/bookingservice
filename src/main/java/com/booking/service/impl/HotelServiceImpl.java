@@ -66,36 +66,41 @@ public class HotelServiceImpl implements HotelService {
             throw new IllegalArgumentException("Hotel and its associated address and street must not be null");
         }
 
-        String countryName = hotel.getAddressEntity().getStreet().getCity().getCountry().getName();
+        // Сбор информации из репозиториев
+        AddressEntity addressEntity = hotel.getAddressEntity();
+        Street street = addressEntity.getStreet();
+        City city = street.getCity();
+        String countryName = city.getCountry().getName();
 
+        // Получение или создание сущностей
+        Country country = getOrCreateCountry(countryName);
+        City existingCity = getOrCreateCity(city, country);
+        Street existingStreet = getOrCreateStreet(street, existingCity);
 
-        Country country = countryRepository.findByName(countryName).orElseGet(() -> {
-            Country newCountry = new Country(null, countryName, null);
-            return countryRepository.save(newCountry);
-        });
+        // Сохранение данных
+        addressEntity.setStreet(existingStreet);
+        addressEntity = addressRepository.save(addressEntity);
 
+        hotel.setAddressEntity(addressEntity);
+        return hotelRepository.save(hotel);
+    }
 
-        City city = hotel.getAddressEntity().getStreet().getCity();
+    private Country getOrCreateCountry(String countryName) {
+        return countryRepository.findByName(countryName)
+                .orElseGet(() -> countryRepository.save(new Country(null, countryName, null)));
+    }
 
-
-        City existingCity = cityRepository.findByNameAndCountry(city.getName(), country)
+    private City getOrCreateCity(City city, Country country) {
+        return cityRepository.findByNameAndCountry(city.getName(), country)
                 .orElseGet(() -> {
                     city.setCountry(country);
                     return cityRepository.save(city);
                 });
+    }
 
-        Street street = hotel.getAddressEntity().getStreet();
-        street.setCity(existingCity);
-        street = streetRepository.save(street);
-
-
-        AddressEntity address = hotel.getAddressEntity();
-        address.setStreet(street);
-        address = addressRepository.save(address);
-
-
-        hotel.setAddressEntity(address);
-        return hotelRepository.save(hotel);
+    private Street getOrCreateStreet(Street street, City city) {
+        street.setCity(city);
+        return streetRepository.save(street);
     }
 
 
